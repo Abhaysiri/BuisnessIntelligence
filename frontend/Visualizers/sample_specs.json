@@ -1,0 +1,475 @@
+[
+  {
+    "name": "KPI Trend",
+    "description": "Trend of the KPI over time compared to expected bounds.",
+    "vega_lite_spec": {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "description": "KPI Trend with Expected Bounds",
+      "data": {
+        "values": [
+          {
+            "timestamp": "2026-07-31T13:59:36.664574",
+            "actual_value": 700,
+            "expected_value": 750,
+            "lower_bound": 720,
+            "upper_bound": 780
+          },
+          {
+            "timestamp": "2026-08-01T13:59:36.664574",
+            "actual_value": 720,
+            "expected_value": 760,
+            "lower_bound": 730,
+            "upper_bound": 790
+          },
+          {
+            "timestamp": "2026-08-02T13:59:36.664574",
+            "actual_value": 725,
+            "expected_value": 770,
+            "lower_bound": 740,
+            "upper_bound": 800
+          },
+          {
+            "timestamp": "2026-08-03T13:59:36.664574",
+            "actual_value": 730,
+            "expected_value": 780,
+            "lower_bound": 750,
+            "upper_bound": 810
+          },
+          {
+            "timestamp": "2026-08-04T13:59:36.664574",
+            "actual_value": 750,
+            "expected_value": 790,
+            "lower_bound": 760,
+            "upper_bound": 820
+          },
+          {
+            "timestamp": "2026-08-05T13:59:36.664574",
+            "actual_value": 755,
+            "expected_value": 800,
+            "lower_bound": 770,
+            "upper_bound": 830
+          },
+          {
+            "timestamp": "2026-08-06T13:59:36.664574",
+            "actual_value": 760,
+            "expected_value": 810,
+            "lower_bound": 780,
+            "upper_bound": 840
+          },
+          {
+            "timestamp": "2026-08-07T13:59:36.664574",
+            "actual_value": 780,
+            "expected_value": 820,
+            "lower_bound": 790,
+            "upper_bound": 850
+          },
+          {
+            "timestamp": "2026-08-08T13:59:36.664574",
+            "actual_value": 785,
+            "expected_value": 830,
+            "lower_bound": 800,
+            "upper_bound": 860
+          },
+          {
+            "timestamp": "2026-08-09T13:59:36.664574",
+            "actual_value": 790,
+            "expected_value": 840,
+            "lower_bound": 810,
+            "upper_bound": 870
+          },
+          {
+            "timestamp": "2026-08-10T13:59:36.664574",
+            "actual_value": 810,
+            "expected_value": 850,
+            "lower_bound": 820,
+            "upper_bound": 880
+          },
+          {
+            "timestamp": "2026-08-11T13:59:36.664574",
+            "actual_value": 815,
+            "expected_value": 860,
+            "lower_bound": 830,
+            "upper_bound": 890
+          },
+          {
+            "timestamp": "2026-08-12T13:59:36.664574",
+            "actual_value": 820,
+            "expected_value": 870,
+            "lower_bound": 840,
+            "upper_bound": 900
+          },
+          {
+            "timestamp": "2026-08-13T13:59:36.664574",
+            "actual_value": 840,
+            "expected_value": 880,
+            "lower_bound": 850,
+            "upper_bound": 910
+          },
+          {
+            "timestamp": "2026-08-14T13:59:36.664574",
+            "actual_value": 845,
+            "expected_value": 890,
+            "lower_bound": 860,
+            "upper_bound": 920
+          },
+          {
+            "timestamp": "2026-08-15T13:59:36.664574",
+            "actual_value": 850,
+            "expected_value": 900,
+            "lower_bound": 870,
+            "upper_bound": 930
+          },
+          {
+            "timestamp": "2026-08-16T13:59:36.664574",
+            "actual_value": 870,
+            "expected_value": 910,
+            "lower_bound": 880,
+            "upper_bound": 940
+          },
+          {
+            "timestamp": "2026-08-17T13:59:36.664574",
+            "actual_value": 875,
+            "expected_value": 920,
+            "lower_bound": 890,
+            "upper_bound": 950
+          },
+          {
+            "timestamp": "2026-08-18T13:59:36.664574",
+            "actual_value": 880,
+            "expected_value": 930,
+            "lower_bound": 900,
+            "upper_bound": 960
+          },
+          {
+            "timestamp": "2026-08-19T13:59:36.664574",
+            "actual_value": 900,
+            "expected_value": 940,
+            "lower_bound": 910,
+            "upper_bound": 970
+          },
+          {
+            "timestamp": "2026-08-20T13:59:36.664574",
+            "actual_value": 905,
+            "expected_value": 950,
+            "lower_bound": 920,
+            "upper_bound": 980
+          },
+          {
+            "timestamp": "2026-08-21T13:59:36.664574",
+            "actual_value": 910,
+            "expected_value": 960,
+            "lower_bound": 930,
+            "upper_bound": 990
+          },
+          {
+            "timestamp": "2026-08-22T13:59:36.664574",
+            "actual_value": 930,
+            "expected_value": 970,
+            "lower_bound": 940,
+            "upper_bound": 1000
+          },
+          {
+            "timestamp": "2026-08-23T13:59:36.664574",
+            "actual_value": 935,
+            "expected_value": 980,
+            "lower_bound": 950,
+            "upper_bound": 1010
+          },
+          {
+            "timestamp": "2026-08-24T13:59:36.664574",
+            "actual_value": 940,
+            "expected_value": 990,
+            "lower_bound": 960,
+            "upper_bound": 1020
+          },
+          {
+            "timestamp": "2026-08-25T13:59:36.664574",
+            "actual_value": 960,
+            "expected_value": 1000,
+            "lower_bound": 970,
+            "upper_bound": 1030
+          },
+          {
+            "timestamp": "2026-08-26T13:59:36.664574",
+            "actual_value": 965,
+            "expected_value": 1010,
+            "lower_bound": 980,
+            "upper_bound": 1040
+          },
+          {
+            "timestamp": "2026-08-27T13:59:36.664574",
+            "actual_value": 970,
+            "expected_value": 1020,
+            "lower_bound": 990,
+            "upper_bound": 1050
+          },
+          {
+            "timestamp": "2026-08-28T13:59:36.664574",
+            "actual_value": 990,
+            "expected_value": 1030,
+            "lower_bound": 1000,
+            "upper_bound": 1060
+          },
+          {
+            "timestamp": "2026-08-29T13:59:36.664574",
+            "actual_value": 995,
+            "expected_value": 1040,
+            "lower_bound": 1010,
+            "upper_bound": 1070
+          },
+          {
+            "timestamp": "2026-08-30T13:59:36.664574",
+            "actual_value": 1000,
+            "expected_value": 1050,
+            "lower_bound": 1020,
+            "upper_bound": 1080
+          }
+        ]
+      },
+      "width": "container",
+      "height": 300,
+      "layer": [
+        {
+          "mark": {
+            "type": "errorband",
+            "opacity": 0.2
+          },
+          "encoding": {
+            "x": {
+              "field": "timestamp",
+              "type": "temporal",
+              "title": "Date"
+            },
+            "y": {
+              "field": "lower_bound",
+              "type": "quantitative",
+              "title": "KPI Value"
+            },
+            "y2": {
+              "field": "upper_bound"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "line",
+            "strokeDash": [
+              5,
+              5
+            ]
+          },
+          "encoding": {
+            "x": {
+              "field": "timestamp",
+              "type": "temporal"
+            },
+            "y": {
+              "field": "expected_value",
+              "type": "quantitative"
+            },
+            "color": {
+              "value": "#888"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "line",
+            "point": true
+          },
+          "encoding": {
+            "x": {
+              "field": "timestamp",
+              "type": "temporal"
+            },
+            "y": {
+              "field": "actual_value",
+              "type": "quantitative"
+            },
+            "color": {
+              "value": "#1f77b4"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "Dimensional Breakdown",
+    "description": "Where did the KPI change?",
+    "vega_lite_spec": {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "description": "Dimensional Breakdown",
+      "data": {
+        "values": [
+          {
+            "dimension": "Europe",
+            "value": -40000
+          },
+          {
+            "dimension": "Asia",
+            "value": -8000
+          },
+          {
+            "dimension": "US",
+            "value": -5000
+          },
+          {
+            "dimension": "Latin America",
+            "value": 2000
+          }
+        ]
+      },
+      "width": "container",
+      "height": 300,
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "value",
+          "type": "quantitative",
+          "title": "Change"
+        },
+        "y": {
+          "field": "dimension",
+          "type": "nominal",
+          "sort": "-x",
+          "title": "Dimension"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.value > 0",
+            "value": "#2ca02c"
+          },
+          "value": "#d62728"
+        }
+      }
+    }
+  },
+  {
+    "name": "Driver Contribution",
+    "description": "Why did the KPI change?",
+    "vega_lite_spec": {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "description": "Driver Contribution",
+      "data": {
+        "values": [
+          {
+            "driver": "Conversion Rate Drop in Europe",
+            "contribution_absolute": -40000,
+            "contribution_percentage": -4.44,
+            "confidence": 0.92
+          },
+          {
+            "driver": "Traffic Drop in Asia",
+            "contribution_absolute": -8000,
+            "contribution_percentage": -0.88,
+            "confidence": 0.85
+          }
+        ]
+      },
+      "width": "container",
+      "height": 300,
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "contribution_absolute",
+          "type": "quantitative",
+          "title": "Impact"
+        },
+        "y": {
+          "field": "driver",
+          "type": "nominal",
+          "sort": "-x",
+          "title": "Driver"
+        },
+        "color": {
+          "field": "confidence",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "blues"
+          },
+          "title": "Confidence"
+        },
+        "tooltip": [
+          {
+            "field": "driver",
+            "type": "nominal"
+          },
+          {
+            "field": "contribution_absolute",
+            "type": "quantitative",
+            "title": "Absolute Impact"
+          },
+          {
+            "field": "contribution_percentage",
+            "type": "quantitative",
+            "title": "Percentage Impact"
+          },
+          {
+            "field": "confidence",
+            "type": "quantitative",
+            "title": "Confidence Score"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "Effect Timeline",
+    "description": "When did the events happen?",
+    "vega_lite_spec": {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "description": "Effect Timeline",
+      "data": {
+        "values": [
+          {
+            "timestamp": "2026-08-15T13:59:36.664574",
+            "event_type": "Marketing Campaign",
+            "title": "Summer Sale Started",
+            "source_id": "mktg_sys_1",
+            "evidence_id": "ev_123"
+          },
+          {
+            "timestamp": "2026-08-25T13:59:36.664574",
+            "event_type": "Outage",
+            "title": "Payment Gateway Down",
+            "source_id": "eng_sys_1",
+            "evidence_id": "ev_124"
+          }
+        ]
+      },
+      "width": "container",
+      "height": 150,
+      "mark": {
+        "type": "circle",
+        "size": 200
+      },
+      "encoding": {
+        "x": {
+          "field": "timestamp",
+          "type": "temporal",
+          "title": "Date"
+        },
+        "color": {
+          "field": "event_type",
+          "type": "nominal",
+          "title": "Event Type"
+        },
+        "tooltip": [
+          {
+            "field": "timestamp",
+            "type": "temporal"
+          },
+          {
+            "field": "title",
+            "type": "nominal"
+          },
+          {
+            "field": "event_type",
+            "type": "nominal"
+          }
+        ]
+      }
+    }
+  }
+]
