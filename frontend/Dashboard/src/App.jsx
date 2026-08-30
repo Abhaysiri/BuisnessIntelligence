@@ -11,9 +11,13 @@ import {
   ChevronRight,
   ChevronDown,
   ArrowLeft,
-  Sparkles
+  Sparkles,
+  ThumbsUp,
+  ThumbsDown,
+  CheckCircle
 } from 'lucide-react';
 import './index.css';
+import UploadDocuments from './pages/UploadDocuments';
 
 const domains = {
   Technical: [
@@ -124,7 +128,7 @@ function Sidebar() {
     { name: 'Dashboard Home', icon: <LayoutDashboard size={18} />, path: '/' },
     { name: 'Previous Analytics History', icon: <History size={18} />, path: '#' },
     { name: 'Major KPI Events', icon: <Calendar size={18} />, path: '#' },
-    { name: 'Upload Documents', icon: <FileUp size={18} />, path: '#' },
+    { name: 'Upload Documents', icon: <FileUp size={18} />, path: '/upload-documents' },
     { name: 'Runtime Telemetry', icon: <Activity size={18} />, path: '#' },
     { name: 'Request KPI Story', icon: <BarChart2 size={18} />, path: '/kpi-analysis' }
   ];
@@ -163,21 +167,25 @@ function Sidebar() {
   );
 }
 
-function Navbar({ userRole }) {
+function Navbar({ userRole, onChangeRole }) {
   return (
     <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 shrink-0">
       <h1 className="text-base font-semibold text-slate-900 tracking-tight">
         Business Intelligence Platform
       </h1>
-      <div className="flex items-center gap-3">
-        <div className="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 text-slate-700 font-semibold text-sm flex items-center justify-center">
+      <button 
+        onClick={onChangeRole}
+        title="Click to switch persona role"
+        className="flex items-center gap-3 p-1.5 rounded-lg hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all cursor-pointer"
+      >
+        <div className="w-9 h-9 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-semibold text-sm flex items-center justify-center">
           J
         </div>
         <div className="flex flex-col text-right leading-tight">
           <span className="text-sm font-semibold text-slate-900">John</span>
-          <span className="text-xs text-slate-500">{userRole || 'Software Development'}</span>
+          <span className="text-xs text-slate-500">{userRole || 'Select Role'}</span>
         </div>
-      </div>
+      </button>
     </header>
   );
 }
@@ -204,6 +212,82 @@ function KpiAnalysis() {
     { label: 'Monthly KPI Report', detail: 'Current Month (MTD)' },
     { label: 'Custom Reports', detail: 'Date Range & Metrics' }
   ];
+
+    const [messages, setMessages] = useState([
+    {
+      role: 'ai',
+      text: 'Hello John! I am tuned to your persona. What KPI story would you like to investigate today? You can ask about recent variance anomalies, dimensional breakdowns, or conversion drivers.'
+    }
+  ]);
+
+  const handleSendMessage = async (e) => {
+    e.preventDefault();
+    if (!inputText.trim()) return;
+
+    const userMessage = { role: 'user', text: inputText };
+    setMessages((prev) => [...prev, userMessage]);
+    setInputText('');
+
+    // Add a loading message
+    const loadingId = Date.now();
+    setMessages((prev) => [...prev, { id: loadingId, role: 'ai', text: 'Analyzing KPI data and generating narrative...' }]);
+
+    try {
+      // NOTE: Update this URL to match your exact backend orchestration endpoint.
+      // Currently, it hits the persona story endpoint, assuming you have a diagnostic payload ready.
+      const response = await fetch('http://localhost:8000/persona/story?diagnostic_payload_id=latest', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          role: 'engineering', // Changed from 'Technical' to a valid PersonaRole enum
+          prompt: userMessage.text 
+        })
+      });
+
+      if (!response.ok) {
+        const errText = await response.text();
+        throw new Error(`API request failed: ${response.status} - ${errText}`);
+      }
+      const data = await response.json();
+      
+      // Replace loading message with actual response
+      setMessages((prev) => prev.map(msg => {
+        if (msg.id === loadingId) {
+          const content = data.narrative ? `**${data.headline}**\n\n${data.narrative}` : JSON.stringify(data);
+          return { role: 'ai', text: content, trace_id: data.trace_id, is_persona_story: true, id: loadingId, feedback_status: null };
+        }
+        return msg;
+      }));
+
+    } catch (error) {
+      console.error(error);
+      setMessages((prev) => prev.map(msg => 
+        msg.id === loadingId ? { role: 'ai', text: 'Error: Could not connect to the KPI engine backend. Please ensure the API is running on port 8000.' } : msg
+      ));
+    }
+  };
+
+  const handleFeedback = async (msgId, traceId, verdict) => {
+    // Optimistically update UI
+    setMessages((prev) => prev.map(msg => 
+      msg.id === msgId ? { ...msg, feedback_status: verdict } : msg
+    ));
+
+    try {
+      await fetch('http://localhost:8000/persona/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          trace_id: traceId || 'unknown',
+          reviewer_role: 'Technical',
+          verdict: verdict,
+          comments: ''
+        })
+      });
+    } catch (error) {
+      console.error('Failed to submit feedback:', error);
+    }
+  };
 
   return (
     <div className="p-8 flex flex-col h-[calc(100vh-4rem)] overflow-y-auto">
@@ -249,20 +333,53 @@ function KpiAnalysis() {
 
         {/* Chat History */}
         <div className="flex-1 p-6 overflow-y-auto space-y-4">
-          <div className="flex items-start gap-3 max-w-2xl">
-            <div className="w-7 h-7 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-1 font-semibold text-xs">
-              AI
+          {messages.map((msg, index) => (
+            <div key={index} className={`flex items-start gap-3 max-w-2xl ${msg.role === 'user' ? 'ml-auto flex-row-reverse' : ''}`}>
+              <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 mt-1 font-semibold text-xs ${msg.role === 'user' ? 'bg-slate-800 text-white' : 'bg-blue-100 text-blue-700'}`}>
+                {msg.role === 'user' ? 'ME' : 'AI'}
+              </div>
+              <div className={`border rounded-2xl p-4 text-sm leading-relaxed shadow-xs flex flex-col gap-3 ${msg.role === 'user' ? 'bg-white border-slate-200 text-slate-800 rounded-tr-xs' : 'bg-blue-50 text-blue-900 border-blue-100 rounded-tl-xs'}`}>
+                <div>
+                  {msg.text.split('\n').map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line.startsWith('**') && line.endsWith('**') ? <strong>{line.replace(/\*\*/g, '')}</strong> : line}
+                      {i < msg.text.split('\n').length - 1 && <br />}
+                    </React.Fragment>
+                  ))}
+                </div>
+                {msg.is_persona_story && msg.id && (
+                  <div className="flex items-center gap-2 mt-2 pt-2 border-t border-blue-200/50">
+                    <span className="text-xs text-blue-800/70 font-medium mr-1">Helpful?</span>
+                    <button 
+                      onClick={() => handleFeedback(msg.id, msg.trace_id, 1)}
+                      className={`p-1.5 rounded hover:bg-blue-200/50 transition-colors ${msg.feedback_status === 1 ? 'text-green-600 bg-green-100' : 'text-blue-700/60 hover:text-blue-700'}`}
+                      disabled={msg.feedback_status !== null && msg.feedback_status !== undefined}
+                    >
+                      <ThumbsUp size={14} />
+                    </button>
+                    <button 
+                      onClick={() => handleFeedback(msg.id, msg.trace_id, 0)}
+                      className={`p-1.5 rounded hover:bg-blue-200/50 transition-colors ${msg.feedback_status === 0 ? 'text-red-600 bg-red-100' : 'text-blue-700/60 hover:text-blue-700'}`}
+                      disabled={msg.feedback_status !== null && msg.feedback_status !== undefined}
+                    >
+                      <ThumbsDown size={14} />
+                    </button>
+                    {msg.feedback_status !== null && msg.feedback_status !== undefined && (
+                      <span className="text-xs text-green-600 flex items-center gap-1 ml-2">
+                        <CheckCircle size={12} /> Feedback saved
+                      </span>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
-            <div className="bg-blue-50 text-blue-900 border border-blue-100 rounded-2xl rounded-tl-xs p-4 text-sm leading-relaxed shadow-xs">
-              Hello John! I am tuned to your persona. What KPI story would you like to investigate today? You can ask about recent variance anomalies, dimensional breakdowns, or conversion drivers.
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* Input Field Area */}
         <div className="p-4 border-t border-slate-200 bg-white">
           <form 
-            onSubmit={(e) => { e.preventDefault(); setInputText(''); }}
+            onSubmit={handleSendMessage}
             className="relative flex items-center"
           >
             <input
@@ -286,8 +403,8 @@ function KpiAnalysis() {
 }
 
 export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
-  const [userRole, setUserRole] = useState('Software Development');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userRole, setUserRole] = useState('');
 
   const handleLogin = (domain, role) => {
     setUserRole(role);
@@ -301,11 +418,13 @@ export default function App() {
       <div className="flex h-screen w-screen overflow-hidden bg-slate-50 font-sans">
         <Sidebar />
         <div className="flex-1 flex flex-col min-w-0">
-          <Navbar userRole={userRole} />
+          <Navbar userRole={userRole} onChangeRole={() => setIsAuthenticated(false)} />
           <main className="flex-1 overflow-hidden">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/kpi-analysis" element={<KpiAnalysis />} />
+              <Route path="/upload-documents" element={<UploadDocuments />} />
+              <Route path="/upload" element={<UploadDocuments />} />
             </Routes>
           </main>
         </div>

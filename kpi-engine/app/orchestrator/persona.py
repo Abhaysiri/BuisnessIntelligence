@@ -56,16 +56,20 @@ Generate the persona-specific story using ONLY the information in the Diagnostic
     api_key = settings.openai_api_key or os.getenv("OPENAI_API_KEY", "sk-mock-key")
     
     try:
+        from langchain_core.tracers.context import collect_runs
         llm = ChatOpenAI(
             model="gpt-4o-mini",
             temperature=0,
             api_key=api_key
         ).with_structured_output(PersonaStoryPayload)
 
-        result = llm.invoke([
-            SystemMessage(content=SYSTEM_PROMPT),
-            HumanMessage(content=user_message),
-        ])
+        with collect_runs() as cb:
+            result = llm.invoke([
+                SystemMessage(content=SYSTEM_PROMPT),
+                HumanMessage(content=user_message),
+            ])
+            if cb.traced_runs:
+                result.trace_id = str(cb.traced_runs[0].id)
         return result
     except Exception:
         # Structured deterministic fallback formatted for role

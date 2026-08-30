@@ -25,3 +25,10 @@ def create_persona_story(
     )
 
     return result
+
+from app.monitoring.feedback import submit_feedback, FeedbackRequest
+
+@router.post("/persona/feedback")
+def submit_persona_feedback(feedback: FeedbackRequest):
+    success = submit_feedback(feedback)
+    return {"success": success}

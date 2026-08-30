@@ -37,3 +37,4 @@ class PersonaStoryPayload(BaseModel):
     uncertainty: dict[str, Any]
 
     diagnostic_payload_id: str
+    trace_id: str | None = None

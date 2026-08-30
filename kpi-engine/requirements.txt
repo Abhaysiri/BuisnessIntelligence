@@ -9,3 +9,5 @@ langchain-core
 langgraph
 zen-engine
 networkx
+langsmith
+langchain
