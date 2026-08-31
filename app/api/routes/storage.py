@@ -15,32 +15,32 @@ router = APIRouter(
 # UPLOAD
 # --------------------------------------------------
 
-@router.post("/upload")
-async def upload_file(
-    file: UploadFile = File(...)
-):
-    try:
+# @router.post("/upload")
+# async def upload_file(
+#     file: UploadFile = File(...)
+# ):
+#     try:
 
-        result = await StorageService.upload_file(file)
+#         result = await StorageService.upload_file(file)
 
-        return {
-            "message": "File uploaded successfully",
-            "file": result
-        }
+#         return {
+#             "message": "File uploaded successfully",
+#             "file": result
+#         }
 
-    except ValueError as e:
+#     except ValueError as e:
 
-        raise HTTPException(
-            status_code=400,
-            detail=str(e)
-        )
+#         raise HTTPException(
+#             status_code=400,
+#             detail=str(e)
+#         )
 
-    except Exception as e:
+#     except Exception as e:
 
-        raise HTTPException(
-            status_code=500,
-            detail=str(e)
-        )
+#         raise HTTPException(
+#             status_code=500,
+#             detail=str(e)
+#         )
 
 
 # --------------------------------------------------

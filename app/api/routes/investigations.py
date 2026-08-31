@@ -30,17 +30,17 @@ def get_investigation(
     return investigation
 
 
-@router.post("/")
-def create_investigation(
-    movement_event_id: str,
-    organization_id: str,
-    current_user: dict = Depends(get_current_user)
-):
+# @router.post("/")
+# def create_investigation(
+#     movement_event_id: str,
+#     organization_id: str,
+#     current_user: dict = Depends(get_current_user)
+# ):
 
-    return InvestigationService.create_investigation(
-        movement_event_id,
-        organization_id
-    )
+#     return InvestigationService.create_investigation(
+#         movement_event_id,
+#         organization_id
+#     )
 
 
 @router.patch("/{investigation_id}/status")

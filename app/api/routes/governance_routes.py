@@ -9,23 +9,23 @@ router = APIRouter(
 )
 
 
-@router.post("/evaluate/{recommendation_id}")
-def evaluate_recommendation(
-    recommendation_id: str,
-    organization_id: str
-):
-    result = GovernanceController.evaluate_recommendation(
-        recommendation_id,
-        organization_id
-    )
+# @router.post("/evaluate/{recommendation_id}")
+# def evaluate_recommendation(
+#     recommendation_id: str,
+#     organization_id: str
+# ):
+#     result = GovernanceController.evaluate_recommendation(
+#         recommendation_id,
+#         organization_id
+#     )
 
-    if not result:
-        raise HTTPException(
-            status_code=404,
-            detail="Recommendation not found"
-        )
+#     if not result:
+#         raise HTTPException(
+#             status_code=404,
+#             detail="Recommendation not found"
+#         )
 
-    return result
+#     return result
 
 
 @router.get("/recommendation/{recommendation_id}")
