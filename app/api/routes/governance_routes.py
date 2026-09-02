@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
 
 from app.controllers.governance_controller import GovernanceController
 
@@ -9,23 +9,7 @@ router = APIRouter(
 )
 
 
-# @router.post("/evaluate/{recommendation_id}")
-# def evaluate_recommendation(
-#     recommendation_id: str,
-#     organization_id: str
-# ):
-#     result = GovernanceController.evaluate_recommendation(
-#         recommendation_id,
-#         organization_id
-#     )
-
-#     if not result:
-#         raise HTTPException(
-#             status_code=404,
-#             detail="Recommendation not found"
-#         )
-
-#     return result
+# POST /api/v1/governance/evaluate/{recommendation_id} is redundant (KPI engine handles governance via zen-engine)
 
 
 @router.get("/recommendation/{recommendation_id}")

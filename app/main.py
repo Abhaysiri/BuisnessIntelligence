@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes.kpis import router as kpi_router
 from app.api.routes.agents import router as agent_router
@@ -11,8 +12,16 @@ from app.api.routes.storage import router as storage_router
 from app.api.routes.audit import router as audit_router
 
 
-app = FastAPI()
+app = FastAPI(title="Business Intelligence Backend")
 
+# Enable CORS for frontend development
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(
     kpi_router,
@@ -63,6 +72,7 @@ app.include_router(
 @app.get("/")
 def root():
     return {
-        "message": "Business Intelligence Backend"
+        "message": "Business Intelligence Backend",
+        "status": "online",
+        "version": "2.0.0"
     }
-
