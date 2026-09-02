@@ -1,4 +1,4 @@
-from fastapi import APIRouter, UploadFile, File, HTTPException
+from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 from io import BytesIO
 
@@ -11,36 +11,7 @@ router = APIRouter(
 )
 
 
-# --------------------------------------------------
-# UPLOAD
-# --------------------------------------------------
-
-@router.post("/upload")
-async def upload_file(
-    file: UploadFile = File(...)
-):
-    try:
-
-        result = await StorageService.upload_file(file)
-
-        return {
-            "message": "File uploaded successfully",
-            "file": result
-        }
-
-    except ValueError as e:
-
-        raise HTTPException(
-            status_code=400,
-            detail=str(e)
-        )
-
-    except Exception as e:
-
-        raise HTTPException(
-            status_code=500,
-            detail=str(e)
-        )
+# POST /api/v1/storage/upload removed (frontend uploads via KPI engine ingest)
 
 
 # --------------------------------------------------
@@ -51,13 +22,10 @@ async def upload_file(
 def get_file_metadata(
     file_path: str
 ):
-
     try:
-
         result = StorageService.get_metadata(file_path)
 
         if not result:
-
             raise HTTPException(
                 status_code=404,
                 detail="File not found"
@@ -66,11 +34,9 @@ def get_file_metadata(
         return result
 
     except HTTPException:
-
         raise
 
     except Exception as e:
-
         raise HTTPException(
             status_code=500,
             detail=str(e)
@@ -85,15 +51,12 @@ def get_file_metadata(
 def download_file(
     file_path: str
 ):
-
     try:
-
         file_bytes = StorageService.download_file(
             file_path
         )
 
         if not file_bytes:
-
             raise HTTPException(
                 status_code=404,
                 detail="File not found"
@@ -111,11 +74,9 @@ def download_file(
         )
 
     except HTTPException:
-
         raise
 
     except Exception as e:
-
         raise HTTPException(
             status_code=500,
             detail=str(e)
