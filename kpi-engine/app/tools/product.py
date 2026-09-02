@@ -11,6 +11,7 @@ def get_product_metrics(start: str, end: str, kpi_key: str = "monthly_revenue"):
     query = text("""
         SELECT
             COALESCE(dimensions->>'product', 'unknown') AS product,
+            DATE(observed_at) AS date,
             SUM(value) AS total_value
         FROM canonical_measurements
         WHERE observed_at >= :start
@@ -22,8 +23,8 @@ def get_product_metrics(start: str, end: str, kpi_key: str = "monthly_revenue"):
               )
               OR :kpi_key IS NULL
           )
-        GROUP BY dimensions->>'product'
-        ORDER BY total_value DESC
+        GROUP BY dimensions->>'product', DATE(observed_at)
+        ORDER BY date DESC, total_value DESC
     """)
 
     try:

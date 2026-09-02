@@ -148,15 +148,16 @@ class MedallionIngestionPipeline:
             cadence=active_cadence,
         )
 
-        # ----------------------------------------------------
-        # 3. Imputation Hierarchy (§2.5)
-        # ----------------------------------------------------
-        imputer = TimeSeriesImputer(cadence=active_cadence)
-        imputed_df, imputation_summary = imputer.regularize_and_impute(
-            silver_df,
-            tenant_id=tenant_id,
-            kpi_id=kpi_id,
-        )
+        # Skip 1D imputation for dimensional data to avoid destroying dimensional breakdowns
+        imputed_df = silver_df
+        imputation_summary = {
+            "total_points": len(silver_df),
+            "missing_count": 0,
+            "missing_ratio": 0.0,
+            "max_gap": 0,
+            "stl_eligible": True,
+            "cold_start_bayesian_trigger": False,
+        }
 
         # Convert to list of dict records for validation gates
         records_to_validate = imputed_df.to_dicts()

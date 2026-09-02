@@ -1,9 +1,7 @@
-import os
-from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage, HumanMessage
 
-from app.schemas.persona import PersonaStoryPayload, PersonaRole
-from app.config import settings
+from app.schemas.persona import PersonaStoryPayload
+from app.llm_client import get_structured_llm
 
 SYSTEM_PROMPT = """
 You are the Persona Storytelling Orchestrator.
@@ -53,15 +51,10 @@ DIAGNOSTIC PAYLOAD:
 Generate the persona-specific story using ONLY the information in the DiagnosticPayload.
 """
 
-    api_key = settings.openai_api_key or os.getenv("OPENAI_API_KEY", "sk-mock-key")
-    
     try:
         from langchain_core.tracers.context import collect_runs
-        llm = ChatOpenAI(
-            model="gpt-4o-mini",
-            temperature=0,
-            api_key=api_key
-        ).with_structured_output(PersonaStoryPayload)
+        from app.llm_client import get_gemini_structured_llm
+        llm = get_gemini_structured_llm(PersonaStoryPayload, temperature=0.0)
 
         with collect_runs() as cb:
             result = llm.invoke([
@@ -76,17 +69,14 @@ Generate the persona-specific story using ONLY the information in the Diagnostic
         drivers = diagnostic_payload.get("drivers", [])
         primary_name = drivers[0].get("name", "Identified anomaly") if drivers else "Unknown driver"
         
-        # Match enum
-        try:
-            matched_role = PersonaRole(role.lower())
-        except Exception:
-            matched_role = PersonaRole.ANALYST
-
+        # Fallback uses the provided custom string role
+        safe_role = str(role).strip() if role else "Analyst"
+            
         return PersonaStoryPayload(
-            role=matched_role,
-            requested_focus=[persona_prompt[:100]],
-            headline=f"[{role.upper()} BRIEF] {primary_name} impact on {diagnostic_payload.get('kpi_id', 'KPI')}",
-            narrative=f"Diagnostic report tailored for {role}: Observed a {diagnostic_payload.get('percentage_change', 0)}% change. User request focus: '{persona_prompt}'. Key contributing factors have been identified and governed under policy rules.",
+            role=safe_role,
+            requested_focus=[persona_prompt] if persona_prompt else [],
+            headline=f"[{safe_role.upper()} BRIEF] {primary_name} impact on {diagnostic_payload.get('kpi_id')}",
+            narrative=f"Diagnostic report tailored for {safe_role}: Observed a {diagnostic_payload.get('percentage_change', 0.0)*100}% change. User request focus: '{persona_prompt}'. Key contributing factors have been identified and governed under policy rules.",
             key_drivers=drivers,
             evidence=[{"source": "diagnostic_payload", "details": drivers}],
             recommendations=diagnostic_payload.get("recommendations", []),

@@ -1,9 +1,3 @@
-"""
-Runtime Telemetry Observability Collector (§5.3)
-Aggregates latency, model calls, token usage, and cost across all 7 runtime hooks
-into the unified Frontend Telemetry JSON Schema contract.
-"""
-
 import os
 import sys
 import time
@@ -33,6 +27,7 @@ class LatencyBreakdown(BaseModel):
 class TokenUsageBreakdown(BaseModel):
     prompt_tokens: int = 0
     completion_tokens: int = 0
+    cached_tokens: int = 0
     total_tokens: int = 0
 
 
@@ -45,20 +40,28 @@ class TelemetryPayload(BaseModel):
     trace_id: str
     total_latency_ms: float
     breakdown: LatencyBreakdown
-    model_calls: Dict[str, Any]
+    model_calls: ModelCallsBreakdown
     tokens: TokenUsageBreakdown
+    db_queries_count: int
+    rules_evaluated_count: int
+    fired_rule_ids: List[int]
     estimated_cost_usd: float
 
 
 class TelemetryCollector:
     """
-    Thread-safe / Async-safe runtime telemetry accumulator for a single request lifecycle.
+    Runtime telemetry accumulator for a single request lifecycle.
+    NOTE: Not thread-safe for concurrent mutations. You must instantiate 
+    one TelemetryCollector per request/thread.
     """
 
     def __init__(self, trace_id: Optional[str] = None, cost_calculator: Optional[CostCalculator] = None):
         self.trace_id = trace_id or f"tr-{uuid.uuid4().hex[:8]}-{time.strftime('%Y%m%d')}"
         self.cost_calculator = cost_calculator or CostCalculator()
         self.start_time = time.perf_counter()
+        
+        # Explicit initialization for latency override
+        self.total_latency_override: Optional[float] = None
 
         self.db_latency_ms: float = 0.0
         self.agent_swarm_latency_ms: float = 0.0
@@ -81,7 +84,7 @@ class TelemetryCollector:
     # Hook 1: Request Lifecycle
     # ------------------------------------------------------------------------
     def set_total_latency(self, latency_ms: float) -> None:
-        self._override_total_latency = latency_ms
+        self.total_latency_override = latency_ms
 
     # ------------------------------------------------------------------------
     # Hook 2: Database Query Execution
@@ -161,18 +164,12 @@ class TelemetryCollector:
         Compile all collected metrics into the frontend TelemetryPayload.
         """
         total_latency = (
-            getattr(self, "_override_total_latency", None)
-            if hasattr(self, "_override_total_latency")
+            self.total_latency_override
+            if self.total_latency_override is not None
             else (time.perf_counter() - self.start_time) * 1000.0
         )
 
         estimated_cost = self.cost_calculator.calculate_aggregate_cost(self.model_token_map)
-
-        model_calls_dict: Dict[str, Any] = {
-            "total_calls": sum(self.model_calls_by_name.values()),
-        }
-        for k, v in self.model_calls_by_name.items():
-            model_calls_dict[k] = v
 
         return TelemetryPayload(
             trace_id=self.trace_id,
@@ -185,11 +182,18 @@ class TelemetryCollector:
                 governance_latency_ms=round(self.governance_latency_ms, 2),
                 persona_story_llm_latency_ms=round(self.persona_story_llm_latency_ms, 2),
             ),
-            model_calls=model_calls_dict,
+            model_calls=ModelCallsBreakdown(
+                total_calls=sum(self.model_calls_by_name.values()),
+                counts=self.model_calls_by_name
+            ),
             tokens=TokenUsageBreakdown(
                 prompt_tokens=self.total_prompt_tokens,
                 completion_tokens=self.total_completion_tokens,
+                cached_tokens=self.total_cached_tokens,
                 total_tokens=self.total_prompt_tokens + self.total_completion_tokens,
             ),
+            db_queries_count=self.db_queries_count,
+            rules_evaluated_count=self.rules_evaluated_count,
+            fired_rule_ids=self.fired_rule_ids,
             estimated_cost_usd=estimated_cost,
         )

@@ -32,6 +32,8 @@ def main():
 
     print(f"Starting evaluation on dataset: {args.dataset}")
     
+    import sys
+    
     try:
         experiment_results = evaluate(
             run_kpi_pipeline,
@@ -41,8 +43,34 @@ def main():
             client=client
         )
         print("Evaluation complete. View results in LangSmith.")
+        
+        # Calculate pass rate
+        total_scores = 0
+        total_evals = 0
+        
+        for result in experiment_results:
+            eval_results = result.get("evaluation_results", {})
+            results_list = eval_results.get("results", [])
+            for eval_res in results_list:
+                score = getattr(eval_res, 'score', None)
+                if score is not None:
+                    total_scores += score
+                    total_evals += 1
+                    
+        if total_evals > 0:
+            average_score = total_scores / total_evals
+            print(f"Aggregate Evaluation Score: {average_score:.2%}")
+            
+            # Fail the CI pipeline if average score drops below 90%
+            if average_score < 0.90:
+                print("Error: Average evaluation score is below the 90% threshold. Failing CI check.")
+                sys.exit(1)
+        else:
+            print("No evaluation scores recorded.")
+            
     except Exception as e:
         print(f"Evaluation failed. Make sure the dataset exists: {e}")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

@@ -1,19 +1,13 @@
 from typing import Any
-from enum import Enum
-
 from pydantic import BaseModel, Field
 
 
-class PersonaRole(str, Enum):
-    ANALYST = "analyst"
-    FINANCE = "finance"
-    EXECUTIVE = "executive"
-    SALES = "sales"
-    ENGINEERING = "engineering"
-
-
 class PersonaRequest(BaseModel):
-    role: PersonaRole
+    role: str = Field(
+        min_length=1,
+        max_length=100,
+        description="The persona or audience role to tailor the story for"
+    )
     prompt: str = Field(
         min_length=1,
         max_length=2000
@@ -21,7 +15,7 @@ class PersonaRequest(BaseModel):
 
 
 class PersonaStoryPayload(BaseModel):
-    role: PersonaRole
+    role: str
 
     requested_focus: list[str] = Field(
         default_factory=list

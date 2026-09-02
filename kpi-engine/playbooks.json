@@ -1,0 +1,2237 @@
+[
+  {
+    "playbook_id": "b40fc206-9b21-4ba1-8fe1-a12d589d7935",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "A critical zero-day vulnerability is detected in a core framework.",
+      "dimension_filters": {}
+    },
+    "action": "Freeze all non-essential CI/CD deployment pipelines and force an immediate patch out of band."
+  },
+  {
+    "playbook_id": "a04c142a-1d51-487e-89a4-fafeb2a1e3a3",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Cloud server CPU utilization exceeds 85% for more than 5 minutes.",
+      "dimension_filters": {}
+    },
+    "action": "Auto-scale infrastructure by provisioning additional compute instances behind the load balancer."
+  },
+  {
+    "playbook_id": "277bf28e-28b8-413d-8235-5cf614681e6c",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Database replication lag exceeds 60 seconds during peak traffic.",
+      "dimension_filters": {}
+    },
+    "action": "Temporarily route all read queries to the primary database to prevent users from seeing stale data."
+  },
+  {
+    "playbook_id": "3d504ede-8749-4409-ad7e-ec465866c2e0",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "A new mobile app update triggers a crash rate above 1%.",
+      "dimension_filters": {}
+    },
+    "action": "Halt the phased app store rollout immediately and rollback users to the previous stable build."
+  },
+  {
+    "playbook_id": "a8378104-b7cd-4501-8115-cea65d5cb0cf",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Customer Acquisition Cost (CAC) on a specific ad channel exceeds the target by 20%.",
+      "dimension_filters": {}
+    },
+    "action": "Pause the underperforming campaign and automatically reallocate the budget to the highest-converting channel."
+  },
+  {
+    "playbook_id": "107e3c42-e359-4589-875b-ee7a3a3e72c9",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "An organic social media post experiences a 500% spike in engagement.",
+      "dimension_filters": {}
+    },
+    "action": "Immediately allocate a designated 'slush fund' budget to boost the post as a paid advertisement to capitalize on the algorithm."
+  },
+  {
+    "playbook_id": "d58b0cfa-833a-4f42-9b91-3ac979105cee",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Email campaign unsubscribe rates spike above 2% within the first hour.",
+      "dimension_filters": {}
+    },
+    "action": "Abort the remainder of the email send queue and trigger a review of the content formatting and audience segmentation."
+  },
+  {
+    "playbook_id": "1e9f9416-a2c4-4595-b297-6948f040b12e",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "E-commerce shopping cart abandonment exceeds historical averages for 2 hours.",
+      "dimension_filters": {}
+    },
+    "action": "Trigger an automated, time-sensitive sequence offering a 10% discount code to recover the lost sessions."
+  },
+  {
+    "playbook_id": "bece4750-f728-45b4-a426-b20c01119036",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Pipeline coverage drops below 3x the required quarterly revenue target by mid-quarter.",
+      "dimension_filters": {}
+    },
+    "action": "Launch an emergency outbound prospecting 'spiff' (short-term incentive) to motivate the sales development team."
+  },
+  {
+    "playbook_id": "466d4d19-2d91-4e9f-93ee-89008dc6d4f7",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "An enterprise deal worth over $100k sees no communication from the buyer for 14 days.",
+      "dimension_filters": {}
+    },
+    "action": "Flag the account as 'at-risk' in the CRM and automatically loop in an executive sponsor for peer-to-peer outreach."
+  },
+  {
+    "playbook_id": "ad48a9db-28b7-4540-a7da-f73c64e99a96",
+    "department": "Supply Chain",
+    "trigger_condition": {
+      "description": "A primary overseas supplier delays a critical component shipment by more than 48 hours.",
+      "dimension_filters": {}
+    },
+    "action": "Auto-route the backordered volume to a secondary, local supplier despite higher unit costs to prevent production halts."
+  },
+  {
+    "playbook_id": "1c8ffd91-6efa-4b96-ae3f-e31f0187a9fb",
+    "department": "Supply Chain",
+    "trigger_condition": {
+      "description": "Inventory for a high-velocity SKU drops below 7 days of trailing sales data.",
+      "dimension_filters": {}
+    },
+    "action": "Trigger an expedited freight reorder to restock warehouses before a stockout occurs."
+  },
+  {
+    "playbook_id": "2ae53cb5-379b-4367-946f-2b3698eb6858",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "A high-priority (Severity 1) support ticket remains unassigned for 15 minutes.",
+      "dimension_filters": {}
+    },
+    "action": "Escalate the ticket automatically and trigger a PagerDuty alert to the on-call engineering manager."
+  },
+  {
+    "playbook_id": "274c8677-dc19-49b3-b412-2214a16c988c",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "A high-value enterprise client submits a Net Promoter Score (NPS) below 6.",
+      "dimension_filters": {}
+    },
+    "action": "Flag the account for a high churn risk and require the Customer Success Manager to schedule an intervention call within 24 hours."
+  },
+  {
+    "playbook_id": "2ddc3dd2-6eb6-4eef-9c35-d36e9c11ce06",
+    "department": "Finance",
+    "trigger_condition": {
+      "description": "Operational cash flow drops below a predefined 4-month runway threshold.",
+      "dimension_filters": {}
+    },
+    "action": "Automatically freeze all non-essential hiring requisitions and halt travel and entertainment (T&E) budget approvals."
+  },
+  {
+    "playbook_id": "a96df2ae-9238-48b8-a62d-96e7d469a633",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Engagement drops on Android platform for Pro Plan users acquired via Referral.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Pro Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "Android"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Referral offering a specialized renewal discount for Pro Plan to SMB accounts in LATAM."
+  },
+  {
+    "playbook_id": "ec7424ed-29d4-45f2-bede-631e32a3f155",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for SMB segment using Data Add-on on Desktop in Europe.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Data Add-on",
+        "customer_segment": "SMB",
+        "sales_channel": "Partner",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Pause underperforming Partner ad spend in Europe for SMB and redirect budget to top-converting Desktop campaigns."
+  },
+  {
+    "playbook_id": "44111b3e-2830-4021-8110-bd0509efb1ae",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for Mid-Market segment using Enterprise SaaS on Desktop in Europe.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Referral",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Referral offering a specialized renewal discount for Enterprise SaaS to Mid-Market accounts in Europe."
+  },
+  {
+    "playbook_id": "07d243a4-7a4c-4845-976f-8789738020e0",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Engagement drops on Desktop platform for Starter Plan users acquired via Direct Sales.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Direct Sales",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Direct Sales offering a specialized renewal discount for Starter Plan to SMB accounts in LATAM."
+  },
+  {
+    "playbook_id": "859de298-0b45-468a-b358-768e02df1d4b",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for Mid-Market segment using Data Add-on on iOS in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Data Add-on",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Direct Sales",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the iOS build in APAC affecting Data Add-on workflows."
+  },
+  {
+    "playbook_id": "9c806dc9-7e81-47ec-8a7d-b59f4f9f8a03",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Desktop for Data Add-on in the Europe region.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Data Add-on",
+        "customer_segment": "SMB",
+        "sales_channel": "Partner",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Pause underperforming Partner ad spend in Europe for SMB and redirect budget to top-converting Desktop campaigns."
+  },
+  {
+    "playbook_id": "8a3f9dd1-905a-45e4-b943-748570657b13",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Online campaigns targeting Mid-Market in North America.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on Android to improve onboarding completion for Mid-Market users of Starter Plan in North America."
+  },
+  {
+    "playbook_id": "eecf5456-f938-4e86-b847-b6ed8c6db91c",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on iOS for Enterprise SaaS in the APAC region.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "SMB",
+        "sales_channel": "Direct Sales",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Pause underperforming Direct Sales ad spend in APAC for SMB and redirect budget to top-converting iOS campaigns."
+  },
+  {
+    "playbook_id": "bfadd179-62ab-4fa4-a82c-e0df003ccc56",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in LATAM for Referral acquired Startup customers.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Starter Plan",
+        "customer_segment": "Startup",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Pause underperforming Referral ad spend in LATAM for Startup and redirect budget to top-converting iOS campaigns."
+  },
+  {
+    "playbook_id": "782ba425-b570-4449-9163-9f8ab986c7da",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for Enterprise segment using Data Add-on on iOS in Europe.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Data Add-on",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Enterprise accounts in Europe utilizing Data Add-on. Prioritize high-value Referral referrals."
+  },
+  {
+    "playbook_id": "793b9923-8f15-4e89-ad0d-188bc0a1bbba",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Web for Enterprise SaaS in the APAC region.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Referral",
+        "device_os": "Web"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on Web to improve onboarding completion for Enterprise users of Enterprise SaaS in APAC."
+  },
+  {
+    "playbook_id": "fdb35928-f567-4bc9-9aca-971fdc30e534",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for SMB segment using Data Add-on on Web in Europe.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Data Add-on",
+        "customer_segment": "SMB",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Web build in Europe affecting Data Add-on workflows."
+  },
+  {
+    "playbook_id": "ec6b9330-1d01-42e7-a5e1-709aeda8aa91",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Web for Data Add-on in the APAC region.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Data Add-on",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "Web"
+      }
+    },
+    "action": "Pause underperforming Referral ad spend in APAC for SMB and redirect budget to top-converting Web campaigns."
+  },
+  {
+    "playbook_id": "63279e01-c9e2-44a6-b221-a320ac6d9b5c",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in APAC for Referral acquired Startup customers.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "Startup",
+        "sales_channel": "Referral",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on Desktop to improve onboarding completion for Startup users of Starter Plan in APAC."
+  },
+  {
+    "playbook_id": "771bcf1a-7910-4217-a68d-ce14d75eaf77",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Referral campaigns targeting Mid-Market in LATAM.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Pro Plan",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Referral",
+        "device_os": "Android"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Android build in LATAM affecting Pro Plan workflows."
+  },
+  {
+    "playbook_id": "ff0d234c-8e19-43c7-82c1-d8f68d2f66e2",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for SMB segment using Data Add-on on Desktop in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Data Add-on",
+        "customer_segment": "SMB",
+        "sales_channel": "Partner",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Pause underperforming Partner ad spend in APAC for SMB and redirect budget to top-converting Desktop campaigns."
+  },
+  {
+    "playbook_id": "957cd185-61f6-4e00-ad51-b59c9d7bda23",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for Enterprise segment using Data Add-on on Android in LATAM.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Data Add-on",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Referral",
+        "device_os": "Android"
+      }
+    },
+    "action": "Pause underperforming Referral ad spend in LATAM for Enterprise and redirect budget to top-converting Android campaigns."
+  },
+  {
+    "playbook_id": "c7603742-3306-4466-8d60-6b7020c45f66",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Partner campaigns targeting Startup in Europe.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Pro Plan",
+        "customer_segment": "Startup",
+        "sales_channel": "Partner",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Partner offering a specialized renewal discount for Pro Plan to Startup accounts in Europe."
+  },
+  {
+    "playbook_id": "6c965736-3948-4511-a00f-f0331e262f33",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Referral campaigns targeting Startup in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Data Add-on",
+        "customer_segment": "Startup",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Pause underperforming Referral ad spend in APAC for Startup and redirect budget to top-converting iOS campaigns."
+  },
+  {
+    "playbook_id": "dec04719-808b-4e05-a54b-754dc337347c",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Desktop for Starter Plan in the North America region.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Direct Sales",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Desktop build in North America affecting Starter Plan workflows."
+  },
+  {
+    "playbook_id": "4d269291-ace9-4b0f-a265-55b144addde7",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Desktop for Data Add-on in the Europe region.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Data Add-on",
+        "customer_segment": "SMB",
+        "sales_channel": "Direct Sales",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Pause underperforming Direct Sales ad spend in Europe for SMB and redirect budget to top-converting Desktop campaigns."
+  },
+  {
+    "playbook_id": "fc1f6b9e-4f25-4040-a41b-b354c00de549",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for Mid-Market segment using Starter Plan on Web in LATAM.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Starter Plan",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Online",
+        "device_os": "Web"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Web build in LATAM affecting Starter Plan workflows."
+  },
+  {
+    "playbook_id": "b2e0d89c-1073-471a-ba09-64ea06027671",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Desktop for Enterprise SaaS in the North America region.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "SMB",
+        "sales_channel": "Partner",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Partner offering a specialized renewal discount for Enterprise SaaS to SMB accounts in North America."
+  },
+  {
+    "playbook_id": "e77914a4-46cf-4be5-a1cf-d03f80add332",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Android for Pro Plan in the APAC region.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Pro Plan",
+        "customer_segment": "Startup",
+        "sales_channel": "Referral",
+        "device_os": "Android"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Android build in APAC affecting Pro Plan workflows."
+  },
+  {
+    "playbook_id": "4d60c25e-6245-499c-993e-7f0fc6e4efc7",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Web for Pro Plan in the APAC region.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Pro Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Online",
+        "device_os": "Web"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Enterprise accounts in APAC utilizing Pro Plan. Prioritize high-value Online referrals."
+  },
+  {
+    "playbook_id": "3858efaa-9395-43b8-9fed-d8c0fd68467e",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Desktop for Data Add-on in the LATAM region.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Data Add-on",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Referral",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Referral offering a specialized renewal discount for Data Add-on to Enterprise accounts in LATAM."
+  },
+  {
+    "playbook_id": "fe148b31-3c4a-41e7-8bfd-b8f4b8048b64",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Engagement drops on Android platform for Enterprise SaaS users acquired via Partner.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Android"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Partner offering a specialized renewal discount for Enterprise SaaS to Mid-Market accounts in North America."
+  },
+  {
+    "playbook_id": "768334ec-9b3f-4e69-8762-65c127aab630",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in Europe for Online acquired Mid-Market customers.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Pro Plan",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Online",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on Desktop to improve onboarding completion for Mid-Market users of Pro Plan in Europe."
+  },
+  {
+    "playbook_id": "36714d98-c52c-49a5-bced-9fc17aa6e7ad",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Desktop for Enterprise SaaS in the APAC region.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "SMB",
+        "sales_channel": "Direct Sales",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on Desktop to improve onboarding completion for SMB users of Enterprise SaaS in APAC."
+  },
+  {
+    "playbook_id": "8543f607-ef09-4eac-9c8e-8641842de223",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Android for Enterprise SaaS in the APAC region.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Startup",
+        "sales_channel": "Direct Sales",
+        "device_os": "Android"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Android build in APAC affecting Enterprise SaaS workflows."
+  },
+  {
+    "playbook_id": "023066fe-09c0-4284-9be0-9e8a65cff07a",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for Startup segment using Enterprise SaaS on Android in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Startup",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on Android to improve onboarding completion for Startup users of Enterprise SaaS in APAC."
+  },
+  {
+    "playbook_id": "a727c2ca-3c7b-4306-8566-14dc9fd09689",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Engagement drops on Android platform for Starter Plan users acquired via Online.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Starter Plan",
+        "customer_segment": "Startup",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Online offering a specialized renewal discount for Starter Plan to Startup accounts in LATAM."
+  },
+  {
+    "playbook_id": "63bccd95-b6d4-4ebc-918d-802d5702c336",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in North America for Online acquired SMB customers.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Data Add-on",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on iOS to improve onboarding completion for SMB users of Data Add-on in North America."
+  },
+  {
+    "playbook_id": "0044b15c-1170-4af4-8a43-7b7a906a37a6",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on iOS for Pro Plan in the LATAM region.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Pro Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Online offering a specialized renewal discount for Pro Plan to SMB accounts in LATAM."
+  },
+  {
+    "playbook_id": "ff06562e-1df7-4fc4-bd32-792f111d40c5",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on iOS for Starter Plan in the Europe region.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Partner",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Pause underperforming Partner ad spend in Europe for SMB and redirect budget to top-converting iOS campaigns."
+  },
+  {
+    "playbook_id": "52f9039f-c96e-438a-b7af-2cd138270faa",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for Enterprise segment using Pro Plan on Desktop in LATAM.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Pro Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on Desktop to improve onboarding completion for Enterprise users of Pro Plan in LATAM."
+  },
+  {
+    "playbook_id": "8dc5dd09-44b2-4358-b6ab-da776aab3106",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in North America for Partner acquired Startup customers.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Data Add-on",
+        "customer_segment": "Startup",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    "action": "Pause underperforming Partner ad spend in North America for Startup and redirect budget to top-converting Web campaigns."
+  },
+  {
+    "playbook_id": "15a7c064-9413-49d6-91a5-200ac5a903ad",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in Europe for Online acquired Enterprise customers.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Pro Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Pause underperforming Online ad spend in Europe for Enterprise and redirect budget to top-converting iOS campaigns."
+  },
+  {
+    "playbook_id": "930825aa-56f6-4b63-9027-40f796ae6355",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Engagement drops on Web platform for Data Add-on users acquired via Online.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Data Add-on",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Online",
+        "device_os": "Web"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Web build in Europe affecting Data Add-on workflows."
+  },
+  {
+    "playbook_id": "c0389e20-1d84-405a-bed7-2cab4b13a034",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Engagement drops on Desktop platform for Starter Plan users acquired via Direct Sales.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "Startup",
+        "sales_channel": "Direct Sales",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Desktop build in North America affecting Starter Plan workflows."
+  },
+  {
+    "playbook_id": "5c5435da-454d-45f2-8d2f-7a162a5b8dd4",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on iOS for Data Add-on in the APAC region.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Data Add-on",
+        "customer_segment": "Startup",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Referral offering a specialized renewal discount for Data Add-on to Startup accounts in APAC."
+  },
+  {
+    "playbook_id": "36de984f-2ab9-4ff7-98d6-16ba9b0e8860",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Partner campaigns targeting SMB in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Pro Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Partner",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Partner offering a specialized renewal discount for Pro Plan to SMB accounts in APAC."
+  },
+  {
+    "playbook_id": "4b5e04cf-fae5-4361-8e69-1e9a31bf85ad",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in North America for Partner acquired Enterprise customers.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Data Add-on",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Enterprise accounts in North America utilizing Data Add-on. Prioritize high-value Partner referrals."
+  },
+  {
+    "playbook_id": "5ca51ca9-e434-4752-80fb-148353210a77",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Desktop for Data Add-on in the North America region.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Data Add-on",
+        "customer_segment": "SMB",
+        "sales_channel": "Direct Sales",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on Desktop to improve onboarding completion for SMB users of Data Add-on in North America."
+  },
+  {
+    "playbook_id": "3db4cee0-aabd-43ba-997f-100d60b1daa3",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Web for Enterprise SaaS in the APAC region.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "SMB",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Web build in APAC affecting Enterprise SaaS workflows."
+  },
+  {
+    "playbook_id": "bbb83f21-0114-4c93-ba04-2dfddf79f622",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in LATAM for Partner acquired SMB customers.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Enterprise SaaS",
+        "customer_segment": "SMB",
+        "sales_channel": "Partner",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Pause underperforming Partner ad spend in LATAM for SMB and redirect budget to top-converting Desktop campaigns."
+  },
+  {
+    "playbook_id": "423353d2-6447-438f-9877-9a404aff7dc0",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Desktop for Starter Plan in the Europe region.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Online",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Desktop build in Europe affecting Starter Plan workflows."
+  },
+  {
+    "playbook_id": "402dfe28-50db-433e-b629-cddad8bb138d",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Engagement drops on Android platform for Pro Plan users acquired via Online.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Pro Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Online offering a specialized renewal discount for Pro Plan to SMB accounts in LATAM."
+  },
+  {
+    "playbook_id": "2c9a078b-6d40-45e9-ac61-0bfcf1d87aa8",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Web for Data Add-on in the LATAM region.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Data Add-on",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Partner offering a specialized renewal discount for Data Add-on to Mid-Market accounts in LATAM."
+  },
+  {
+    "playbook_id": "85b3201a-8d50-484a-a823-b2a6b0e13450",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in LATAM for Direct Sales acquired Enterprise customers.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Data Add-on",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Direct Sales offering a specialized renewal discount for Data Add-on to Enterprise accounts in LATAM."
+  },
+  {
+    "playbook_id": "b0176879-71da-4c75-8c7e-19eb957f3593",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in APAC for Referral acquired SMB customers.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Data Add-on",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Pause underperforming Referral ad spend in APAC for SMB and redirect budget to top-converting iOS campaigns."
+  },
+  {
+    "playbook_id": "510b5be7-b779-451d-ba68-2d74f62ca83f",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for SMB segment using Pro Plan on iOS in Europe.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Pro Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Direct Sales",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Direct Sales offering a specialized renewal discount for Pro Plan to SMB accounts in Europe."
+  },
+  {
+    "playbook_id": "cbaaab6f-b66b-4d75-992f-c5c368d75e6a",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Referral campaigns targeting Enterprise in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Referral",
+        "device_os": "Android"
+      }
+    },
+    "action": "Pause underperforming Referral ad spend in APAC for Enterprise and redirect budget to top-converting Android campaigns."
+  },
+  {
+    "playbook_id": "db011dd9-1117-44a4-ad81-1bef616fcd0b",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in North America for Online acquired SMB customers.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Data Add-on",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Web"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Online offering a specialized renewal discount for Data Add-on to SMB accounts in North America."
+  },
+  {
+    "playbook_id": "016c8619-3915-4104-8ffd-4cd9574fda64",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for SMB segment using Enterprise SaaS on Web in LATAM.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Enterprise SaaS",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "Web"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk SMB accounts in LATAM utilizing Enterprise SaaS. Prioritize high-value Referral referrals."
+  },
+  {
+    "playbook_id": "8b25c179-111b-49ab-8e0e-ef6a2187d710",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Referral campaigns targeting Enterprise in Europe.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Pro Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Referral",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on Desktop to improve onboarding completion for Enterprise users of Pro Plan in Europe."
+  },
+  {
+    "playbook_id": "dcf94444-9855-490d-a4cc-0a56dcd54686",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in APAC for Online acquired SMB customers.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Pro Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the iOS build in APAC affecting Pro Plan workflows."
+  },
+  {
+    "playbook_id": "82507495-cc98-4462-a846-0784446964f7",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for Startup segment using Enterprise SaaS on iOS in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Startup",
+        "sales_channel": "Direct Sales",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Startup accounts in APAC utilizing Enterprise SaaS. Prioritize high-value Direct Sales referrals."
+  },
+  {
+    "playbook_id": "d3ad0ed8-3071-4f74-a71b-9d1c0e0630a1",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in APAC for Referral acquired SMB customers.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Referral offering a specialized renewal discount for Enterprise SaaS to SMB accounts in APAC."
+  },
+  {
+    "playbook_id": "ac9992da-34d5-4bc5-b9d7-74ff302cc9b0",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in North America for Partner acquired SMB customers.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Pro Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Partner",
+        "device_os": "Android"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Partner offering a specialized renewal discount for Pro Plan to SMB accounts in North America."
+  },
+  {
+    "playbook_id": "ade7fda8-c18a-4445-978b-2d32442b365f",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for Enterprise segment using Starter Plan on iOS in Europe.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Partner",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Partner offering a specialized renewal discount for Starter Plan to Enterprise accounts in Europe."
+  },
+  {
+    "playbook_id": "94a0045c-13b3-4a04-a8e7-12b71fc435ac",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in Europe for Referral acquired Enterprise customers.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Referral",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Referral offering a specialized renewal discount for Starter Plan to Enterprise accounts in Europe."
+  },
+  {
+    "playbook_id": "9d16684e-683e-4c06-91ae-1863f631c81e",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Referral campaigns targeting Startup in LATAM.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Startup",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Startup accounts in LATAM utilizing Enterprise SaaS. Prioritize high-value Referral referrals."
+  },
+  {
+    "playbook_id": "b232838d-9599-4bce-83d8-6c44b2b3d235",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Engagement drops on Android platform for Starter Plan users acquired via Direct Sales.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Starter Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Android"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Direct Sales offering a specialized renewal discount for Starter Plan to Enterprise accounts in LATAM."
+  },
+  {
+    "playbook_id": "787e3023-339b-4176-8af1-7e417dbdf180",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Web for Enterprise SaaS in the APAC region.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "Web"
+      }
+    },
+    "action": "Pause underperforming Referral ad spend in APAC for SMB and redirect budget to top-converting Web campaigns."
+  },
+  {
+    "playbook_id": "000ff02d-e2da-4d62-ba3c-ed450092dd3d",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Partner campaigns targeting SMB in LATAM.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Pro Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Partner",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on iOS to improve onboarding completion for SMB users of Pro Plan in LATAM."
+  },
+  {
+    "playbook_id": "a6871086-8eec-44af-b711-fdf6c796bae9",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Referral campaigns targeting Enterprise in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Referral",
+        "device_os": "Web"
+      }
+    },
+    "action": "Pause underperforming Referral ad spend in APAC for Enterprise and redirect budget to top-converting Web campaigns."
+  },
+  {
+    "playbook_id": "3e6737ef-865f-4dad-88cc-8ebb81273667",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for Enterprise segment using Pro Plan on Web in LATAM.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Pro Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Referral",
+        "device_os": "Web"
+      }
+    },
+    "action": "Pause underperforming Referral ad spend in LATAM for Enterprise and redirect budget to top-converting Web campaigns."
+  },
+  {
+    "playbook_id": "0aff8a38-07c7-4bbc-8a36-35e7076ca946",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Web for Enterprise SaaS in the Europe region.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on Web to improve onboarding completion for Enterprise users of Enterprise SaaS in Europe."
+  },
+  {
+    "playbook_id": "cf91af48-f03c-491d-a21f-41849a8134c0",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in APAC for Online acquired Startup customers.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Startup",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    "action": "Pause underperforming Online ad spend in APAC for Startup and redirect budget to top-converting Android campaigns."
+  },
+  {
+    "playbook_id": "bbc9f0e8-0785-4e46-aec5-78baec51ad0f",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Referral campaigns targeting Enterprise in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Data Add-on",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Enterprise accounts in APAC utilizing Data Add-on. Prioritize high-value Referral referrals."
+  },
+  {
+    "playbook_id": "a545f980-b0b4-4bbe-9854-fdc879eaea44",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for Startup segment using Pro Plan on Android in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Pro Plan",
+        "customer_segment": "Startup",
+        "sales_channel": "Direct Sales",
+        "device_os": "Android"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on Android to improve onboarding completion for Startup users of Pro Plan in APAC."
+  },
+  {
+    "playbook_id": "2aedff31-591f-4be3-9333-876a7936bf2b",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on iOS for Starter Plan in the Europe region.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "Startup",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Startup accounts in Europe utilizing Starter Plan. Prioritize high-value Online referrals."
+  },
+  {
+    "playbook_id": "73de5ed5-e5fb-4be4-a5e8-023a5edfd5ca",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Web for Enterprise SaaS in the APAC region.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    "action": "Pause underperforming Partner ad spend in APAC for Mid-Market and redirect budget to top-converting Web campaigns."
+  },
+  {
+    "playbook_id": "0fb9d557-db77-4e5d-8975-f7692ebe28b3",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Engagement drops on Desktop platform for Enterprise SaaS users acquired via Direct Sales.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "SMB",
+        "sales_channel": "Direct Sales",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk SMB accounts in North America utilizing Enterprise SaaS. Prioritize high-value Direct Sales referrals."
+  },
+  {
+    "playbook_id": "bb1e091e-d7da-48f3-8e9b-eedf71748648",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in North America for Direct Sales acquired Startup customers.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Startup",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Web build in North America affecting Enterprise SaaS workflows."
+  },
+  {
+    "playbook_id": "a2edc10a-6853-481f-96fd-2b347c875aff",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Engagement drops on Desktop platform for Starter Plan users acquired via Referral.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Referral",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Enterprise accounts in Europe utilizing Starter Plan. Prioritize high-value Referral referrals."
+  },
+  {
+    "playbook_id": "45946b9f-97a8-4abc-8129-5954b2bb089c",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Online campaigns targeting Mid-Market in North America.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Pro Plan",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Online",
+        "device_os": "Web"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Online offering a specialized renewal discount for Pro Plan to Mid-Market accounts in North America."
+  },
+  {
+    "playbook_id": "b973c9ca-33e3-4fee-9a72-b1d8f4bdd0bd",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Online campaigns targeting Enterprise in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Data Add-on",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Online",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on Desktop to improve onboarding completion for Enterprise users of Data Add-on in APAC."
+  },
+  {
+    "playbook_id": "1b4fb39a-420d-450b-ace0-55dc79ae1de0",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Partner campaigns targeting Mid-Market in Europe.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Pro Plan",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Partner offering a specialized renewal discount for Pro Plan to Mid-Market accounts in Europe."
+  },
+  {
+    "playbook_id": "173dcf7e-d016-49ee-b1d2-451355e07530",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Partner campaigns targeting Enterprise in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Data Add-on",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Partner offering a specialized renewal discount for Data Add-on to Enterprise accounts in APAC."
+  },
+  {
+    "playbook_id": "7290b929-28af-4bc4-b199-27d46d79e354",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Referral campaigns targeting SMB in LATAM.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on iOS to improve onboarding completion for SMB users of Starter Plan in LATAM."
+  },
+  {
+    "playbook_id": "b116dcce-3ab7-4a7a-aec6-fb234732d704",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Referral campaigns targeting Mid-Market in North America.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Data Add-on",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Referral",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Mid-Market accounts in North America utilizing Data Add-on. Prioritize high-value Referral referrals."
+  },
+  {
+    "playbook_id": "86f50ff0-1a4f-4d39-9b9d-46711a4b1252",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Online campaigns targeting Enterprise in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Online offering a specialized renewal discount for Starter Plan to Enterprise accounts in APAC."
+  },
+  {
+    "playbook_id": "51e2f96a-09ad-4acc-b83d-8278a75ec4b7",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Partner campaigns targeting SMB in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Pro Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Partner",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the iOS build in APAC affecting Pro Plan workflows."
+  },
+  {
+    "playbook_id": "ff203200-8b02-433b-be70-dd5bb412e2c5",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in Europe for Direct Sales acquired Startup customers.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Data Add-on",
+        "customer_segment": "Startup",
+        "sales_channel": "Direct Sales",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Direct Sales offering a specialized renewal discount for Data Add-on to Startup accounts in Europe."
+  },
+  {
+    "playbook_id": "8916f554-b0c9-4d5a-914a-79c2732ba74a",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Online campaigns targeting Startup in Europe.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "Startup",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the iOS build in Europe affecting Starter Plan workflows."
+  },
+  {
+    "playbook_id": "a0b6e4b0-2b31-4d02-8005-db9a483c62f8",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Referral campaigns targeting Mid-Market in LATAM.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Data Add-on",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on iOS to improve onboarding completion for Mid-Market users of Data Add-on in LATAM."
+  },
+  {
+    "playbook_id": "98571baf-cd49-492b-8527-ba52137afe3a",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Web for Data Add-on in the LATAM region.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Data Add-on",
+        "customer_segment": "Startup",
+        "sales_channel": "Online",
+        "device_os": "Web"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Startup accounts in LATAM utilizing Data Add-on. Prioritize high-value Online referrals."
+  },
+  {
+    "playbook_id": "ad3d971f-b21b-4f49-ab30-d531a3eccf16",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Android for Data Add-on in the Europe region.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Data Add-on",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Partner",
+        "device_os": "Android"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Android build in Europe affecting Data Add-on workflows."
+  },
+  {
+    "playbook_id": "21ef2d03-4aec-482f-8828-c3370bb986ce",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Engagement drops on Desktop platform for Data Add-on users acquired via Online.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Data Add-on",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Online",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Mid-Market accounts in LATAM utilizing Data Add-on. Prioritize high-value Online referrals."
+  },
+  {
+    "playbook_id": "e08d9d28-5f16-4387-a791-6508c6d11b9b",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in North America for Online acquired Startup customers.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Startup",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Pause underperforming Online ad spend in North America for Startup and redirect budget to top-converting iOS campaigns."
+  },
+  {
+    "playbook_id": "91905cf3-bffc-49de-ba82-f74dc13075bd",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Direct Sales campaigns targeting Mid-Market in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Pro Plan",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on Web to improve onboarding completion for Mid-Market users of Pro Plan in APAC."
+  },
+  {
+    "playbook_id": "53aacb80-bfdc-42d5-b0e0-6e564bba5b6a",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Desktop for Starter Plan in the LATAM region.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Starter Plan",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Referral",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Desktop build in LATAM affecting Starter Plan workflows."
+  },
+  {
+    "playbook_id": "cc6f7361-2871-43fc-98b3-720584df042f",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for Mid-Market segment using Starter Plan on Android in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Referral",
+        "device_os": "Android"
+      }
+    },
+    "action": "Pause underperforming Referral ad spend in APAC for Mid-Market and redirect budget to top-converting Android campaigns."
+  },
+  {
+    "playbook_id": "1b24f1bc-0dce-4e1c-bf15-de3d888c1fb7",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Direct Sales campaigns targeting SMB in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Pro Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Web build in APAC affecting Pro Plan workflows."
+  },
+  {
+    "playbook_id": "6832e7e0-4889-4d72-85e8-9590ed3766b1",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on iOS for Pro Plan in the Europe region.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Pro Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Direct Sales",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk SMB accounts in Europe utilizing Pro Plan. Prioritize high-value Direct Sales referrals."
+  },
+  {
+    "playbook_id": "5c65b73f-f658-4f55-8aa8-3dd9f6dead79",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "Engagement drops on Web platform for Enterprise SaaS users acquired via Referral.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "Web"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on Web to improve onboarding completion for SMB users of Enterprise SaaS in APAC."
+  },
+  {
+    "playbook_id": "1b752f18-f8ce-4f81-8765-4517f8c89831",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Engagement drops on Desktop platform for Starter Plan users acquired via Referral.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Pause underperforming Referral ad spend in APAC for SMB and redirect budget to top-converting Desktop campaigns."
+  },
+  {
+    "playbook_id": "819ab047-a9bf-4515-8156-d2db20a080bc",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Engagement drops on Android platform for Pro Plan users acquired via Direct Sales.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Pro Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Android"
+      }
+    },
+    "action": "Pause underperforming Direct Sales ad spend in LATAM for Enterprise and redirect budget to top-converting Android campaigns."
+  },
+  {
+    "playbook_id": "877c83ab-2376-43c7-9c0e-1ee3e0c958f5",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for Startup segment using Data Add-on on iOS in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Data Add-on",
+        "customer_segment": "Startup",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Startup accounts in APAC utilizing Data Add-on. Prioritize high-value Referral referrals."
+  },
+  {
+    "playbook_id": "ce4788ad-7405-40b8-b87b-92df15aea4d0",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on iOS for Data Add-on in the North America region.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Data Add-on",
+        "customer_segment": "SMB",
+        "sales_channel": "Direct Sales",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk SMB accounts in North America utilizing Data Add-on. Prioritize high-value Direct Sales referrals."
+  },
+  {
+    "playbook_id": "4254ea2d-c5be-4279-a9dc-999fc48ad768",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Online campaigns targeting Enterprise in Europe.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on Android to improve onboarding completion for Enterprise users of Starter Plan in Europe."
+  },
+  {
+    "playbook_id": "0892dc88-1b99-4a6f-a066-de8dd9cd1fd2",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Engagement drops on Web platform for Starter Plan users acquired via Direct Sales.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Direct Sales offering a specialized renewal discount for Starter Plan to SMB accounts in APAC."
+  },
+  {
+    "playbook_id": "4baa1dd3-7ff0-46d1-b99d-f28f3c50b6d5",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Engagement drops on Web platform for Data Add-on users acquired via Referral.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Data Add-on",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "Web"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Web build in APAC affecting Data Add-on workflows."
+  },
+  {
+    "playbook_id": "fc6fe64c-e4c8-4390-9d4e-8087c1f2b23a",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Engagement drops on iOS platform for Starter Plan users acquired via Direct Sales.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "Startup",
+        "sales_channel": "Direct Sales",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Pause underperforming Direct Sales ad spend in North America for Startup and redirect budget to top-converting iOS campaigns."
+  },
+  {
+    "playbook_id": "867a8c75-e28f-441d-82ab-d1a4a2d5b0b1",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Engagement drops on Android platform for Starter Plan users acquired via Referral.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Referral",
+        "device_os": "Android"
+      }
+    },
+    "action": "Pause underperforming Referral ad spend in Europe for Mid-Market and redirect budget to top-converting Android campaigns."
+  },
+  {
+    "playbook_id": "2219da47-81c9-42ed-a57f-e1151485cfea",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Partner campaigns targeting SMB in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "SMB",
+        "sales_channel": "Partner",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Desktop build in APAC affecting Enterprise SaaS workflows."
+  },
+  {
+    "playbook_id": "ecd74dc0-657f-4f22-85a0-c4109b6d6a9a",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in APAC for Referral acquired Mid-Market customers.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Referral",
+        "device_os": "Web"
+      }
+    },
+    "action": "Pause underperforming Referral ad spend in APAC for Mid-Market and redirect budget to top-converting Web campaigns."
+  },
+  {
+    "playbook_id": "50a1078a-74fb-4cae-af59-5a720452c337",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Engagement drops on Desktop platform for Data Add-on users acquired via Online.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Data Add-on",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Desktop build in APAC affecting Data Add-on workflows."
+  },
+  {
+    "playbook_id": "16cea8c7-ce30-48ac-9f24-1a631e29241b",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for SMB segment using Data Add-on on Desktop in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Data Add-on",
+        "customer_segment": "SMB",
+        "sales_channel": "Partner",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk SMB accounts in APAC utilizing Data Add-on. Prioritize high-value Partner referrals."
+  },
+  {
+    "playbook_id": "13d6cf4e-3ba3-481a-9c2d-aedef2bda951",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in Europe for Partner acquired Startup customers.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "Startup",
+        "sales_channel": "Partner",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Startup accounts in Europe utilizing Starter Plan. Prioritize high-value Partner referrals."
+  },
+  {
+    "playbook_id": "c0ec1f8e-a0fb-45fb-8eb1-43969055034b",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Android for Enterprise SaaS in the Europe region.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "Android"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Android build in Europe affecting Enterprise SaaS workflows."
+  },
+  {
+    "playbook_id": "ed2c94c5-1a64-4a1c-8268-b799133cf562",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in APAC for Partner acquired Mid-Market customers.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Partner offering a specialized renewal discount for Enterprise SaaS to Mid-Market accounts in APAC."
+  },
+  {
+    "playbook_id": "d97525bb-bb88-4c1c-bef5-8186310be6ad",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Engagement drops on Web platform for Data Add-on users acquired via Direct Sales.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Data Add-on",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    "action": "Pause underperforming Direct Sales ad spend in APAC for Enterprise and redirect budget to top-converting Web campaigns."
+  },
+  {
+    "playbook_id": "7f25e44b-ae01-4972-93bc-96d1fe71b7d4",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Web for Enterprise SaaS in the Europe region.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Startup",
+        "sales_channel": "Online",
+        "device_os": "Web"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Startup accounts in Europe utilizing Enterprise SaaS. Prioritize high-value Online referrals."
+  },
+  {
+    "playbook_id": "cf6e6223-e7fc-4962-a383-5f30a5201397",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Engagement drops on Android platform for Starter Plan users acquired via Referral.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Referral",
+        "device_os": "Android"
+      }
+    },
+    "action": "Pause underperforming Referral ad spend in APAC for Enterprise and redirect budget to top-converting Android campaigns."
+  },
+  {
+    "playbook_id": "be1e0133-d737-461e-abad-ad610705fc74",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in Europe for Direct Sales acquired Mid-Market customers.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Direct Sales",
+        "device_os": "Android"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Mid-Market accounts in Europe utilizing Starter Plan. Prioritize high-value Direct Sales referrals."
+  },
+  {
+    "playbook_id": "73a53f15-97f5-4411-8f70-cc32317d219f",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in North America for Online acquired Enterprise customers.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Pro Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Online",
+        "device_os": "Web"
+      }
+    },
+    "action": "Pause underperforming Online ad spend in North America for Enterprise and redirect budget to top-converting Web campaigns."
+  },
+  {
+    "playbook_id": "140fdb15-3186-460d-9b47-0599b39c837f",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on Desktop for Data Add-on in the APAC region.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Data Add-on",
+        "customer_segment": "Startup",
+        "sales_channel": "Partner",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Pause underperforming Partner ad spend in APAC for Startup and redirect budget to top-converting Desktop campaigns."
+  },
+  {
+    "playbook_id": "a4d093d6-36cc-4df8-be96-ed9c1e1d7229",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Engagement drops on iOS platform for Pro Plan users acquired via Online.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Pro Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk SMB accounts in North America utilizing Pro Plan. Prioritize high-value Online referrals."
+  },
+  {
+    "playbook_id": "5c8fc8d7-c07d-4c00-9b6d-235255946e98",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for Mid-Market segment using Starter Plan on Android in LATAM.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Starter Plan",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Referral",
+        "device_os": "Android"
+      }
+    },
+    "action": "Pause underperforming Referral ad spend in LATAM for Mid-Market and redirect budget to top-converting Android campaigns."
+  },
+  {
+    "playbook_id": "4b3237c6-6543-40da-bf93-62bcc9797f62",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Engagement drops on Web platform for Starter Plan users acquired via Online.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Web"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the Web build in APAC affecting Starter Plan workflows."
+  },
+  {
+    "playbook_id": "1f28c275-41ce-4ce4-a3dc-d9de29713dd5",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in LATAM for Direct Sales acquired Enterprise customers.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Pro Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Android"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on Android to improve onboarding completion for Enterprise users of Pro Plan in LATAM."
+  },
+  {
+    "playbook_id": "e097e3f3-052a-4fbc-a560-d3c3af515c2b",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Engagement drops on Android platform for Data Add-on users acquired via Online.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Data Add-on",
+        "customer_segment": "Startup",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Online offering a specialized renewal discount for Data Add-on to Startup accounts in Europe."
+  },
+  {
+    "playbook_id": "b905e873-0674-47ad-861e-3717bbb0d753",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Referral campaigns targeting Enterprise in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Data Add-on",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Referral",
+        "device_os": "Android"
+      }
+    },
+    "action": "Pause underperforming Referral ad spend in APAC for Enterprise and redirect budget to top-converting Android campaigns."
+  },
+  {
+    "playbook_id": "c2061726-1a15-4d72-8574-fd1177d3468c",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for Startup segment using Starter Plan on Desktop in LATAM.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Starter Plan",
+        "customer_segment": "Startup",
+        "sales_channel": "Referral",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Pause underperforming Referral ad spend in LATAM for Startup and redirect budget to top-converting Desktop campaigns."
+  },
+  {
+    "playbook_id": "ee14e3c3-709d-4b5a-8c6c-40d10cef08c7",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "Engagement drops on Desktop platform for Data Add-on users acquired via Referral.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Data Add-on",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Pause underperforming Referral ad spend in North America for SMB and redirect budget to top-converting Desktop campaigns."
+  },
+  {
+    "playbook_id": "7230f55f-7816-4624-a41f-f2446f3c1b78",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Direct Sales campaigns targeting Mid-Market in Europe.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Mid-Market accounts in Europe utilizing Starter Plan. Prioritize high-value Direct Sales referrals."
+  },
+  {
+    "playbook_id": "b7533711-0dd8-405d-8300-dce8eef43aed",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Partner campaigns targeting SMB in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Pro Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk SMB accounts in APAC utilizing Pro Plan. Prioritize high-value Partner referrals."
+  },
+  {
+    "playbook_id": "a9c2d90d-4f39-48a1-b59e-4a40a1b9d488",
+    "department": "Sales",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on iOS for Data Add-on in the Europe region.",
+      "dimension_filters": {
+        "geography": "Europe",
+        "product": "Data Add-on",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Initiate a targeted outreach campaign via Referral offering a specialized renewal discount for Data Add-on to Enterprise accounts in Europe."
+  },
+  {
+    "playbook_id": "ad78ee07-c0f7-4ba6-9990-d5942fcfbe31",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on iOS for Data Add-on in the APAC region.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Data Add-on",
+        "customer_segment": "SMB",
+        "sales_channel": "Partner",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on iOS to improve onboarding completion for SMB users of Data Add-on in APAC."
+  },
+  {
+    "playbook_id": "af26edfd-164d-4d2c-98fd-822f099981f4",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Usage anomaly detected on iOS for Starter Plan in the APAC region.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "Startup",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Startup accounts in APAC utilizing Starter Plan. Prioritize high-value Referral referrals."
+  },
+  {
+    "playbook_id": "9965ef6c-b69f-4280-80d3-10c6e3121526",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Direct Sales campaigns targeting SMB in LATAM.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk SMB accounts in LATAM utilizing Starter Plan. Prioritize high-value Direct Sales referrals."
+  },
+  {
+    "playbook_id": "5c4e2b01-8b1f-43be-a09e-3923d10dd908",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for SMB segment using Starter Plan on Desktop in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk SMB accounts in APAC utilizing Starter Plan. Prioritize high-value Referral referrals."
+  },
+  {
+    "playbook_id": "3d22f50b-ca00-44b8-a63f-50cbce40c658",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Partner campaigns targeting Mid-Market in North America.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Mid-Market accounts in North America utilizing Starter Plan. Prioritize high-value Partner referrals."
+  },
+  {
+    "playbook_id": "06c8accd-4bda-4ec8-9641-e8ddc46eb41d",
+    "department": "Customer Success",
+    "trigger_condition": {
+      "description": "Churn rate spikes by 15% in North America for Direct Sales acquired Enterprise customers.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Pro Plan",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Android"
+      }
+    },
+    "action": "Automatically schedule check-in calls for at-risk Enterprise accounts in North America utilizing Pro Plan. Prioritize high-value Direct Sales referrals."
+  },
+  {
+    "playbook_id": "c8b28d02-f0c6-46c4-9cd3-9d2ccc2adda2",
+    "department": "Engineering",
+    "trigger_condition": {
+      "description": "Sharp drop in net revenue for Enterprise segment using Data Add-on on iOS in North America.",
+      "dimension_filters": {
+        "geography": "North America",
+        "product": "Data Add-on",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    "action": "Investigate potential latency/crash issues specific to the iOS build in North America affecting Data Add-on workflows."
+  },
+  {
+    "playbook_id": "92899edb-c153-49e6-b7ae-a6160277e6a7",
+    "department": "Marketing",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Direct Sales campaigns targeting Mid-Market in LATAM.",
+      "dimension_filters": {
+        "geography": "LATAM",
+        "product": "Starter Plan",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Direct Sales",
+        "device_os": "Desktop"
+      }
+    },
+    "action": "Pause underperforming Direct Sales ad spend in LATAM for Mid-Market and redirect budget to top-converting Desktop campaigns."
+  },
+  {
+    "playbook_id": "37d34edb-b016-4be3-a616-565a6043e10d",
+    "department": "Product",
+    "trigger_condition": {
+      "description": "CAC increases rapidly for Online campaigns targeting Enterprise in APAC.",
+      "dimension_filters": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Online",
+        "device_os": "Web"
+      }
+    },
+    "action": "Roll out an expedited in-app guidance flow on Web to improve onboarding completion for Enterprise users of Enterprise SaaS in APAC."
+  }
+]

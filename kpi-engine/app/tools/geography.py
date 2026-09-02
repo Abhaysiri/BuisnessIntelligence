@@ -11,6 +11,7 @@ def get_geography_metrics(start: str, end: str, kpi_key: str = "monthly_revenue"
     query = text("""
         SELECT
             COALESCE(dimensions->>'geography', 'unknown') AS geography,
+            DATE(observed_at) AS date,
             SUM(value) AS total_value
         FROM canonical_measurements
         WHERE observed_at >= :start
@@ -22,8 +23,8 @@ def get_geography_metrics(start: str, end: str, kpi_key: str = "monthly_revenue"
               )
               OR :kpi_key IS NULL
           )
-        GROUP BY dimensions->>'geography'
-        ORDER BY total_value DESC
+        GROUP BY dimensions->>'geography', DATE(observed_at)
+        ORDER BY date DESC, total_value DESC
     """)
 
     try:

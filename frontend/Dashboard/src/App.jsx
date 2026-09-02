@@ -14,7 +14,8 @@ import {
   Sparkles,
   ThumbsUp,
   ThumbsDown,
-  CheckCircle
+  CheckCircle,
+  Copy
 } from 'lucide-react';
 import './index.css';
 import UploadDocuments from './pages/UploadDocuments';
@@ -126,10 +127,10 @@ function Sidebar() {
 
   const menuItems = [
     { name: 'Dashboard Home', icon: <LayoutDashboard size={18} />, path: '/' },
-    { name: 'Previous Analytics History', icon: <History size={18} />, path: '#' },
-    { name: 'Major KPI Events', icon: <Calendar size={18} />, path: '#' },
+    { name: 'Previous Analytics History', icon: <History size={18} />, path: '/analytics-history' },
+    { name: 'Major KPI Events', icon: <Calendar size={18} />, path: '/major-events' },
     { name: 'Upload Documents', icon: <FileUp size={18} />, path: '/upload-documents' },
-    { name: 'Runtime Telemetry', icon: <Activity size={18} />, path: '#' },
+    { name: 'Runtime Telemetry', icon: <Activity size={18} />, path: '/runtime-telemetry' },
     { name: 'Request KPI Story', icon: <BarChart2 size={18} />, path: '/kpi-analysis' }
   ];
 
@@ -203,8 +204,20 @@ function Home() {
   );
 }
 
-function KpiAnalysis() {
+function KpiAnalysis({ userRole }) {
   const [inputText, setInputText] = useState('');
+  const [messages, setMessages] = useState(() => {
+    const saved = window.sessionStorage.getItem('kpiAnalysisMessages');
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [activeFeedbackId, setActiveFeedbackId] = useState(null);
+  const [feedbackText, setFeedbackText] = useState('');
+  const [feedbackVerdict, setFeedbackVerdict] = useState(null);
+  const [copiedId, setCopiedId] = useState(null);
+
+  useEffect(() => {
+    window.sessionStorage.setItem('kpiAnalysisMessages', JSON.stringify(messages));
+  }, [messages]);
 
   const reportFilters = [
     { label: 'Daily KPI Report', detail: 'Last 24 Hours' },
@@ -234,10 +247,10 @@ function KpiAnalysis() {
     const loadingId = Date.now();
     setMessages((prev) => [...prev, { id: loadingId, role: 'ai', text: 'Analyzing KPI data and generating narrative...' }]);
     try {
-      const response = await fetch(`http://localhost:8000/persona/story?diagnostic_payload_id=${payloadId}`, {
+      const response = await fetch(`http://127.0.0.1:8000/persona/story?diagnostic_payload_id=${payloadId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ role: 'engineering', prompt: userMessage.text })
+        body: JSON.stringify({ role: userRole.toLowerCase(), prompt: userMessage.text })
       });
       if (!response.ok) {
         const errText = await response.text();
@@ -252,26 +265,30 @@ function KpiAnalysis() {
         return msg;
       }));
     } catch (error) {
-      console.error(error);
-      setMessages((prev) => prev.map(msg => msg.id === loadingId ? { role: 'ai', text: 'Error: Could not connect to the KPI engine backend. Please ensure the API is running on port 8000.' } : msg));
+      console.error("Story generation failed:", error);
+      setMessages((prev) => prev.map(msg => msg.id === loadingId ? { role: 'ai', text: `Error generating story: ${error.message}` } : msg));
     }
   };
 
-  const handleFeedback = async (msgId, traceId, verdict) => {
+  const handleFeedback = async (msgId, traceId, verdict, commentText = '') => {
     // Optimistically update UI
     setMessages((prev) => prev.map(msg => 
       msg.id === msgId ? { ...msg, feedback_status: verdict } : msg
     ));
+    setActiveFeedbackId(null);
+    setFeedbackText('');
+    setFeedbackVerdict(null);
 
     try {
-      await fetch('http://localhost:8000/persona/feedback', {
+      await fetch('http://127.0.0.1:8000/persona/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           trace_id: traceId || 'unknown',
-          reviewer_role: 'Technical',
+          reviewer_role: userRole,
           verdict: verdict,
-          comments: ''
+          comments: commentText,
+          correction: commentText ? { text: commentText } : null
         })
       });
     } catch (error) {
@@ -338,26 +355,111 @@ function KpiAnalysis() {
                   ))}
                 </div>
                 {msg.is_persona_story && msg.id && (
-                  <div className="flex items-center gap-2 mt-2 pt-2 border-t border-blue-200/50">
-                    <span className="text-xs text-blue-800/70 font-medium mr-1">Helpful?</span>
-                    <button 
-                      onClick={() => handleFeedback(msg.id, msg.trace_id, 1)}
-                      className={`p-1.5 rounded hover:bg-blue-200/50 transition-colors ${msg.feedback_status === 1 ? 'text-green-600 bg-green-100' : 'text-blue-700/60 hover:text-blue-700'}`}
-                      disabled={msg.feedback_status !== null && msg.feedback_status !== undefined}
-                    >
-                      <ThumbsUp size={14} />
-                    </button>
-                    <button 
-                      onClick={() => handleFeedback(msg.id, msg.trace_id, 0)}
-                      className={`p-1.5 rounded hover:bg-blue-200/50 transition-colors ${msg.feedback_status === 0 ? 'text-red-600 bg-red-100' : 'text-blue-700/60 hover:text-blue-700'}`}
-                      disabled={msg.feedback_status !== null && msg.feedback_status !== undefined}
-                    >
-                      <ThumbsDown size={14} />
-                    </button>
-                    {msg.feedback_status !== null && msg.feedback_status !== undefined && (
-                      <span className="text-xs text-green-600 flex items-center gap-1 ml-2">
-                        <CheckCircle size={12} /> Feedback saved
-                      </span>
+                  <div className="flex flex-col gap-2 mt-2 pt-2 border-t border-blue-200/50">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs text-blue-800/70 font-medium mr-1">Helpful?</span>
+                      <button 
+                        onClick={() => {
+                          if (msg.feedback_status !== null && msg.feedback_status !== undefined) return;
+                          setActiveFeedbackId(msg.id);
+                          setFeedbackVerdict(feedbackVerdict === 1 ? null : 1);
+                        }}
+                        className={`p-1.5 rounded hover:bg-blue-200/50 transition-colors ${msg.feedback_status === 1 || (activeFeedbackId === msg.id && feedbackVerdict === 1) ? 'text-green-600 bg-green-100' : 'text-blue-700/60 hover:text-blue-700'}`}
+                        disabled={msg.feedback_status !== null && msg.feedback_status !== undefined}
+                      >
+                        <ThumbsUp size={14} />
+                      </button>
+                      <button 
+                        onClick={() => {
+                          if (msg.feedback_status !== null && msg.feedback_status !== undefined) return;
+                          setActiveFeedbackId(msg.id);
+                          setFeedbackVerdict(feedbackVerdict === 0 ? null : 0);
+                        }}
+                        className={`p-1.5 rounded hover:bg-blue-200/50 transition-colors ${msg.feedback_status === 0 || (activeFeedbackId === msg.id && feedbackVerdict === 0) ? 'text-red-600 bg-red-100' : 'text-blue-700/60 hover:text-blue-700'}`}
+                        disabled={msg.feedback_status !== null && msg.feedback_status !== undefined}
+                      >
+                        <ThumbsDown size={14} />
+                      </button>
+                      
+                      {msg.feedback_status === null || msg.feedback_status === undefined ? (
+                        <button
+                          onClick={() => {
+                            if (activeFeedbackId === msg.id) {
+                              setActiveFeedbackId(null);
+                              setFeedbackVerdict(null);
+                              setFeedbackText('');
+                            } else {
+                              setActiveFeedbackId(msg.id);
+                              setFeedbackVerdict(null);
+                              setFeedbackText('');
+                            }
+                          }}
+                          className="text-xs font-semibold text-blue-600 hover:text-blue-800 ml-2 transition-colors cursor-pointer"
+                        >
+                          Feedback
+                        </button>
+                      ) : (
+                        <span className="text-xs text-green-600 flex items-center gap-1 ml-2">
+                          <CheckCircle size={12} /> Feedback saved
+                        </span>
+                      )}
+                      
+                      <button
+                        onClick={() => {
+                          navigator.clipboard.writeText(msg.text.replace(/\*\*/g, ''));
+                          setCopiedId(msg.id);
+                          setTimeout(() => setCopiedId(null), 2000);
+                        }}
+                        className="p-1.5 rounded hover:bg-blue-200/50 text-blue-700/60 hover:text-blue-700 transition-colors ml-auto cursor-pointer flex items-center gap-1.5"
+                        title="Copy response"
+                      >
+                        {copiedId === msg.id ? (
+                          <>
+                            <CheckCircle size={14} className="text-green-600" />
+                            <span className="text-xs font-medium text-green-600">Copied</span>
+                          </>
+                        ) : (
+                          <>
+                            <Copy size={14} />
+                            <span className="text-xs font-medium">Copy</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                    {activeFeedbackId === msg.id && (msg.feedback_status === null || msg.feedback_status === undefined) && (
+                      <div className="mt-1 bg-blue-50/50 rounded-lg border border-blue-100 p-3">
+                        <textarea
+                          value={feedbackText}
+                          onChange={(e) => setFeedbackText(e.target.value)}
+                          placeholder="Provide details for your feedback..."
+                          className="w-full text-sm bg-white border border-slate-200 rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 resize-none"
+                          rows="2"
+                        />
+                        <div className="flex justify-end items-center mt-2 gap-3">
+                          <button
+                            onClick={() => {
+                              setActiveFeedbackId(null);
+                              setFeedbackVerdict(null);
+                              setFeedbackText('');
+                            }}
+                            className="text-xs font-medium text-slate-500 hover:text-slate-700 transition-colors cursor-pointer"
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            onClick={() => {
+                              if (feedbackVerdict === null) {
+                                alert("Please select Thumbs Up or Thumbs Down before submitting.");
+                                return;
+                              }
+                              handleFeedback(msg.id, msg.trace_id, feedbackVerdict, feedbackText);
+                            }}
+                            className="text-xs font-medium bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded transition-colors cursor-pointer"
+                          >
+                            Submit
+                          </button>
+                        </div>
+                      </div>
                     )}
                   </div>
                 )}
@@ -392,6 +494,10 @@ function KpiAnalysis() {
   );
 }
 
+import AnalyticsHistory from './pages/AnalyticsHistory';
+import MajorEvents from './pages/MajorEvents';
+import RuntimeTelemetry from './pages/RuntimeTelemetry';
+
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userRole, setUserRole] = useState('');
@@ -412,7 +518,10 @@ export default function App() {
           <main className="flex-1 overflow-hidden">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/kpi-analysis" element={<KpiAnalysis />} />
+              <Route path="/analytics-history" element={<AnalyticsHistory />} />
+              <Route path="/major-events" element={<MajorEvents />} />
+              <Route path="/runtime-telemetry" element={<RuntimeTelemetry />} />
+              <Route path="/kpi-analysis" element={<KpiAnalysis userRole={userRole} />} />
               <Route path="/upload-documents" element={<UploadDocuments />} />
               <Route path="/upload" element={<UploadDocuments />} />
             </Routes>

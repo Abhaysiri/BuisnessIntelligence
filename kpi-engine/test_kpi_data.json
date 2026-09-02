@@ -1,0 +1,2346 @@
+{
+  "tenant_id": "tenant_acme_corp",
+  "kpi_id": "net_revenue",
+  "measurements": [
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-15T00:00:00Z",
+      "value": 283903.95,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-15T00:00:00Z",
+      "value": 80962.59,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-15T00:00:00Z",
+      "value": 156400.47,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-15T00:00:00Z",
+      "value": 92370.5,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-15T00:00:00Z",
+      "value": 66537.06,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-15T00:00:00Z",
+      "value": 35618.45,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-16T00:00:00Z",
+      "value": 290981.03,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-16T00:00:00Z",
+      "value": 81488.98,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-16T00:00:00Z",
+      "value": 158750.75,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-16T00:00:00Z",
+      "value": 90533.07,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-16T00:00:00Z",
+      "value": 63171.15,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-16T00:00:00Z",
+      "value": 35018.74,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-17T00:00:00Z",
+      "value": 266743.01,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-17T00:00:00Z",
+      "value": 82440.12,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-17T00:00:00Z",
+      "value": 162398.15,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-17T00:00:00Z",
+      "value": 95426.94,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-17T00:00:00Z",
+      "value": 63182.86,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-17T00:00:00Z",
+      "value": 35312.43,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-18T00:00:00Z",
+      "value": 288664.05,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-18T00:00:00Z",
+      "value": 80805.24,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-18T00:00:00Z",
+      "value": 164893.11,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-18T00:00:00Z",
+      "value": 96882.32,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-18T00:00:00Z",
+      "value": 63961.63,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-18T00:00:00Z",
+      "value": 33794.18,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-19T00:00:00Z",
+      "value": 292801.97,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-19T00:00:00Z",
+      "value": 83611.05,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-19T00:00:00Z",
+      "value": 153483.93,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-19T00:00:00Z",
+      "value": 91168.81,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-19T00:00:00Z",
+      "value": 67258.71,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-19T00:00:00Z",
+      "value": 35363.04,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-20T00:00:00Z",
+      "value": 288599.59,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-20T00:00:00Z",
+      "value": 86952.72,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-20T00:00:00Z",
+      "value": 160579.65,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-20T00:00:00Z",
+      "value": 99494.6,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-20T00:00:00Z",
+      "value": 64210.47,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-20T00:00:00Z",
+      "value": 35182.14,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-21T00:00:00Z",
+      "value": 289223.33,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-21T00:00:00Z",
+      "value": 86007.42,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-21T00:00:00Z",
+      "value": 165787.31,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-21T00:00:00Z",
+      "value": 95734.85,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-21T00:00:00Z",
+      "value": 66329.72,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-21T00:00:00Z",
+      "value": 33410.39,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-22T00:00:00Z",
+      "value": 272381.15,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-22T00:00:00Z",
+      "value": 83209.8,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-22T00:00:00Z",
+      "value": 153276.67,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-22T00:00:00Z",
+      "value": 92461.51,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-22T00:00:00Z",
+      "value": 62406.51,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-22T00:00:00Z",
+      "value": 34222.91,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-23T00:00:00Z",
+      "value": 283799.16,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-23T00:00:00Z",
+      "value": 83851.07,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-23T00:00:00Z",
+      "value": 157922.9,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-23T00:00:00Z",
+      "value": 92240.32,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-23T00:00:00Z",
+      "value": 63485.36,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-23T00:00:00Z",
+      "value": 36528.29,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-24T00:00:00Z",
+      "value": 284144.99,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-24T00:00:00Z",
+      "value": 85927.61,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-24T00:00:00Z",
+      "value": 154738.22,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-24T00:00:00Z",
+      "value": 97176.7,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-24T00:00:00Z",
+      "value": 62812.12,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-24T00:00:00Z",
+      "value": 34578.09,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-25T00:00:00Z",
+      "value": 293706.65,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-25T00:00:00Z",
+      "value": 86190.0,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-25T00:00:00Z",
+      "value": 160911.2,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-25T00:00:00Z",
+      "value": 96753.84,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-25T00:00:00Z",
+      "value": 67228.54,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-25T00:00:00Z",
+      "value": 35966.0,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-26T00:00:00Z",
+      "value": 272413.35,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-26T00:00:00Z",
+      "value": 81022.85,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-26T00:00:00Z",
+      "value": 157047.25,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-26T00:00:00Z",
+      "value": 92793.54,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-26T00:00:00Z",
+      "value": 63121.39,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-26T00:00:00Z",
+      "value": 36550.18,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-27T00:00:00Z",
+      "value": 290538.29,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-27T00:00:00Z",
+      "value": 83424.76,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-27T00:00:00Z",
+      "value": 162487.02,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-27T00:00:00Z",
+      "value": 94008.5,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-27T00:00:00Z",
+      "value": 67694.56,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-27T00:00:00Z",
+      "value": 34855.98,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-28T00:00:00Z",
+      "value": 273416.64,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-28T00:00:00Z",
+      "value": 82846.33,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-28T00:00:00Z",
+      "value": 160981.89,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-28T00:00:00Z",
+      "value": 92746.05,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-28T00:00:00Z",
+      "value": 65549.81,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-28T00:00:00Z",
+      "value": 36392.38,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-29T00:00:00Z",
+      "value": 277183.21,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-29T00:00:00Z",
+      "value": 82614.23,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-29T00:00:00Z",
+      "value": 167960.6,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-29T00:00:00Z",
+      "value": 95090.5,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-29T00:00:00Z",
+      "value": 62340.91,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-29T00:00:00Z",
+      "value": 33414.91,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-30T00:00:00Z",
+      "value": 269070.18,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-30T00:00:00Z",
+      "value": 86083.29,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-30T00:00:00Z",
+      "value": 164673.27,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-30T00:00:00Z",
+      "value": 94260.52,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-30T00:00:00Z",
+      "value": 62162.93,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-30T00:00:00Z",
+      "value": 34585.67,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-31T00:00:00Z",
+      "value": 293891.4,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-31T00:00:00Z",
+      "value": 85247.47,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-31T00:00:00Z",
+      "value": 167537.25,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-31T00:00:00Z",
+      "value": 98427.41,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-31T00:00:00Z",
+      "value": 61824.63,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-07-31T00:00:00Z",
+      "value": 35772.53,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-01T00:00:00Z",
+      "value": 285087.89,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-01T00:00:00Z",
+      "value": 85314.25,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-01T00:00:00Z",
+      "value": 156269.2,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-01T00:00:00Z",
+      "value": 96339.14,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-01T00:00:00Z",
+      "value": 62475.09,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-01T00:00:00Z",
+      "value": 34771.68,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-02T00:00:00Z",
+      "value": 278704.26,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-02T00:00:00Z",
+      "value": 88857.44,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-02T00:00:00Z",
+      "value": 166013.65,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-02T00:00:00Z",
+      "value": 92752.2,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-02T00:00:00Z",
+      "value": 65003.81,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-02T00:00:00Z",
+      "value": 33875.28,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-03T00:00:00Z",
+      "value": 291553.58,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-03T00:00:00Z",
+      "value": 88149.41,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-03T00:00:00Z",
+      "value": 156775.12,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-03T00:00:00Z",
+      "value": 96320.02,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-03T00:00:00Z",
+      "value": 65708.31,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-03T00:00:00Z",
+      "value": 33784.94,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-04T00:00:00Z",
+      "value": 287350.3,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-04T00:00:00Z",
+      "value": 85334.72,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-04T00:00:00Z",
+      "value": 164458.02,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-04T00:00:00Z",
+      "value": 11400.0,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-04T00:00:00Z",
+      "value": 61753.72,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-04T00:00:00Z",
+      "value": 34384.55,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-05T00:00:00Z",
+      "value": 266545.35,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-05T00:00:00Z",
+      "value": 88647.34,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-05T00:00:00Z",
+      "value": 166059.55,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-05T00:00:00Z",
+      "value": 42750.0,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-05T00:00:00Z",
+      "value": 63748.84,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-05T00:00:00Z",
+      "value": 33452.74,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-06T00:00:00Z",
+      "value": 290584.27,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-06T00:00:00Z",
+      "value": 88799.07,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-06T00:00:00Z",
+      "value": 153370.46,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-06T00:00:00Z",
+      "value": 94866.91,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-06T00:00:00Z",
+      "value": 62199.88,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-06T00:00:00Z",
+      "value": 35912.11,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-07T00:00:00Z",
+      "value": 287443.36,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-07T00:00:00Z",
+      "value": 81841.33,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-07T00:00:00Z",
+      "value": 159604.52,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-07T00:00:00Z",
+      "value": 95473.13,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-07T00:00:00Z",
+      "value": 63472.87,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-07T00:00:00Z",
+      "value": 36303.52,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-08T00:00:00Z",
+      "value": 277847.86,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-08T00:00:00Z",
+      "value": 82550.28,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-08T00:00:00Z",
+      "value": 160628.74,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-08T00:00:00Z",
+      "value": 97184.35,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-08T00:00:00Z",
+      "value": 63057.48,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-08T00:00:00Z",
+      "value": 34341.01,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "value": 293864.18,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "value": 86273.96,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "value": 159009.6,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "value": 95166.97,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "value": 62536.53,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-09T00:00:00Z",
+      "value": 34036.44,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-10T00:00:00Z",
+      "value": 275466.4,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-10T00:00:00Z",
+      "value": 85750.62,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-10T00:00:00Z",
+      "value": 155681.84,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-10T00:00:00Z",
+      "value": 92342.07,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-10T00:00:00Z",
+      "value": 62211.46,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-10T00:00:00Z",
+      "value": 35458.86,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-11T00:00:00Z",
+      "value": 272410.37,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-11T00:00:00Z",
+      "value": 88446.07,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-11T00:00:00Z",
+      "value": 165754.17,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-11T00:00:00Z",
+      "value": 90923.14,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-11T00:00:00Z",
+      "value": 63297.03,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-11T00:00:00Z",
+      "value": 35591.42,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-12T00:00:00Z",
+      "value": 271998.63,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-12T00:00:00Z",
+      "value": 81874.65,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-12T00:00:00Z",
+      "value": 166968.23,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-12T00:00:00Z",
+      "value": 95674.91,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-12T00:00:00Z",
+      "value": 64822.36,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-12T00:00:00Z",
+      "value": 35996.17,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-13T00:00:00Z",
+      "value": 288609.92,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-13T00:00:00Z",
+      "value": 82368.48,
+      "dimensions": {
+        "geography": "North America",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "iOS"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-13T00:00:00Z",
+      "value": 153550.89,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Mid-Market",
+        "sales_channel": "Partner",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-13T00:00:00Z",
+      "value": 94344.99,
+      "dimensions": {
+        "geography": "Europe",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Online",
+        "device_os": "Android"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-13T00:00:00Z",
+      "value": 64503.26,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Enterprise SaaS",
+        "customer_segment": "Enterprise",
+        "sales_channel": "Direct Sales",
+        "device_os": "Web"
+      }
+    },
+    {
+      "tenant_id": "tenant_acme_corp",
+      "kpi_id": "net_revenue",
+      "observed_at": "2026-08-13T00:00:00Z",
+      "value": 34884.59,
+      "dimensions": {
+        "geography": "APAC",
+        "product": "Starter Plan",
+        "customer_segment": "SMB",
+        "sales_channel": "Referral",
+        "device_os": "iOS"
+      }
+    }
+  ]
+}

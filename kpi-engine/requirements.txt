@@ -11,3 +11,8 @@ zen-engine
 networkx
 langsmith
 langchain
+unstructured
+python-multipart
+opentelemetry-api
+opentelemetry-sdk
+opentelemetry-instrumentation-fastapi

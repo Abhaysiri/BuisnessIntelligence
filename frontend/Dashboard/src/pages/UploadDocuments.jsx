@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   FileText, 
   FileSpreadsheet, 
@@ -28,31 +28,29 @@ export default function UploadDocuments() {
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [currentStep, setCurrentStep] = useState('');
+  const [ingestionError, setIngestionError] = useState(null);
   
   const [toasts, setToasts] = useState([]);
   const toastIdRef = useRef(0);
   const fileIdRef = useRef(0);
   
-  const [recentIngestions, setRecentIngestions] = useState([
-    {
-      id: 'ing_001',
-      filename: 'q3_financial_variance_report.pdf',
-      type: 'Unstructured (PDF)',
-      size: '2.4 MB',
-      dqScore: 0.98,
-      status: 'SILVER_VALIDATED',
-      timestamp: '10 mins ago'
-    },
-    {
-      id: 'ing_002',
-      filename: 'daily_checkout_measurements_2026_08.parquet',
-      type: 'Structured (Parquet)',
-      size: '14.8 MB',
-      dqScore: 0.95,
-      status: 'SILVER_VALIDATED',
-      timestamp: '1 hour ago'
+  const [recentIngestions, setRecentIngestions] = useState([]);
+
+  useEffect(() => {
+    fetchIngestions();
+  }, []);
+
+  const fetchIngestions = async () => {
+    try {
+      const resp = await fetch('http://127.0.0.1:8000/api/v1/audit/ingestions');
+      if (resp.ok) {
+        const data = await resp.json();
+        setRecentIngestions(data.ingestions);
+      }
+    } catch (e) {
+      console.error("Failed to fetch ingestions", e);
     }
-  ]);
+  };
 
   const unstructuredInputRef = useRef(null);
   const structuredInputRef = useRef(null);
@@ -143,91 +141,129 @@ export default function UploadDocuments() {
       return;
     }
 
+    setIngestionError(null);
     setIsUploading(true);
     setUploadProgress(10);
     setCurrentStep('Stage 1/5: Uploading raw immutable payload to Bronze Layer (MinIO WORM)...');
 
     try {
       // Simulation steps for Medallion pipeline
-      await new Promise((r) => setTimeout(r, 600));
       setUploadProgress(35);
       setCurrentStep('Stage 2/5: Executing Tier 1 Pydantic & Tier 2 Pandera validation gates...');
-
-      await new Promise((r) => setTimeout(r, 700));
       setUploadProgress(65);
       setCurrentStep('Stage 3/5: Regularizing timestamps to ISO-8601 UTC & computing SHA-256 dimension hashes...');
-
-      await new Promise((r) => setTimeout(r, 600));
       setUploadProgress(85);
       setCurrentStep('Stage 4/5: Running time-series gap regularization & Akima spline imputation...');
 
         // Attempt actual API post – capture diagnostic payload ID
         try {
-          const formData = new FormData();
-          formData.append('tenant_id', tenantId);
-          formData.append('kpi_id', targetKpi);
-          [...unstructuredFiles, ...structuredFiles].forEach((f) => {
-            formData.append('files', f.file);
-          });
-
-          const resp = await fetch('http://localhost:8000/api/v1/metrics/ingest', {
-            method: 'POST',
-            body: formData,
-          });
-
-          if (!resp.ok) {
-            const err = await resp.text();
-            throw new Error(`Ingestion API error ${resp.status}: ${err}`);
+          
+          // 1. Unstructured Data (OCR via 'unstructured')
+          if (unstructuredFiles.length > 0) {
+            setCurrentStep('Stage 1/5: Running OCR and partitioning unstructured documents...');
+            const unstructuredPromises = unstructuredFiles.map(async (f) => {
+              const formData = new FormData();
+              formData.append('file', f.file);
+              formData.append('tenant_id', tenantId);
+              
+              const resp = await fetch('http://127.0.0.1:8000/api/v1/documents/upload', {
+                method: 'POST',
+                body: formData
+              });
+              if (!resp.ok) {
+                const err = await resp.text();
+                throw new Error(`OCR parsing failed: ${err}`);
+              }
+            });
+            await Promise.all(unstructuredPromises);
           }
 
-          const result = await resp.json(); // expect { diagnostic_payload_id: "..." }
-          const payloadId = result.diagnostic_payload_id;
-          if (payloadId) {
-            // Persist for the KPI analysis page
-            window.sessionStorage.setItem('diagnosticPayloadId', payloadId);
+          let payloadId = null;
+          let dqScore = 0.96;
+
+          // 2. Structured Data (Medallion Pipeline)
+          if (structuredFiles.length > 0) {
+            setCurrentStep('Stage 2/5: Executing Tier 1 Pydantic & Tier 2 Pandera validation gates...');
+            // Read and parse the first structured file (assuming JSON for now)
+            let parsedMeasurements = [];
+            
+            for (const f of structuredFiles) {
+              if (f.file.name.endsWith('.json')) {
+                const text = await f.file.text();
+                try {
+                  const data = JSON.parse(text);
+                  // Allow the JSON to either be the full payload { tenant_id, kpi_id, measurements }
+                  // or just a raw array of measurements
+                  if (data.measurements && Array.isArray(data.measurements)) {
+                    parsedMeasurements.push(...data.measurements);
+                  } else if (Array.isArray(data)) {
+                    parsedMeasurements.push(...data);
+                  }
+                } catch (err) {
+                  throw new Error(`Failed to parse JSON in ${f.file.name}: ${err.message}`);
+                }
+              } else {
+                 throw new Error("Only JSON files are supported for structured uploads in this demo.");
+              }
+            }
+
+            const jsonPayload = {
+              tenant_id: tenantId,
+              kpi_id: targetKpi,
+              measurements: parsedMeasurements.map(m => ({
+                ...m,
+                tenant_id: m.tenant_id || tenantId,
+                kpi_id: m.kpi_id || targetKpi,
+                dimensions: { ...m.dimensions, source_file: structuredFiles[0].name }
+              }))
+            };
+
+            const resp = await fetch('http://127.0.0.1:8000/api/v1/metrics/ingest', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(jsonPayload),
+            });
+
+            if (!resp.ok) {
+              const err = await resp.text();
+              throw new Error(`API error ${resp.status}: ${err}`);
+            }
+
+            const result = await resp.json(); 
+            
+            payloadId = result.diagnostic_payload_id;
+            dqScore = result.dq_score || 0.96;
+            if (payloadId) {
+              window.sessionStorage.setItem('diagnosticPayloadId', payloadId);
+            }
           }
+          setUploadProgress(100);
+          setCurrentStep('Stage 5/5: Computing composite DQ score and committing to Silver catalog.');
+
+          // Refresh logs from backend instead of mocking
+          await fetchIngestions();
+
+          setUnstructuredFiles([]);
+          setStructuredFiles([]);
+
+          addToast(
+            'success',
+            'Ingestion Complete',
+            `Successfully ingested ${totalCount} file(s).`
+          );
         } catch (e) {
           console.error('Ingestion request failed', e);
-          // Continue with simulation fallback
+          setIngestionError(`Failed to complete pipeline ingestion: ${e.message}`);
+          setIsUploading(false);
+          setUploadProgress(0);
+          setCurrentStep('');
+          return; // STOP EXECUTION
         }
 
-      await new Promise((r) => setTimeout(r, 500));
-      setUploadProgress(100);
-      setCurrentStep('Stage 5/5: Computing composite DQ score and committing to Silver catalog.');
-
-      // Add to recent ingestion log
-      const newEntries = [
-        ...unstructuredFiles.map((f, idx) => ({
-          id: `ing_unst_${Date.now()}_${idx}`,
-          filename: f.name,
-          type: `Unstructured (${f.type})`,
-          size: f.size,
-          dqScore: 0.96,
-          status: 'SILVER_VALIDATED',
-          timestamp: 'Just now'
-        })),
-        ...structuredFiles.map((f, idx) => ({
-          id: `ing_str_${Date.now()}_${idx}`,
-          filename: f.name,
-          type: `Structured (${f.type})`,
-          size: f.size,
-          dqScore: 0.99,
-          status: 'SILVER_VALIDATED',
-          timestamp: 'Just now'
-        }))
-      ];
-
-      setRecentIngestions((prev) => [...newEntries, ...prev]);
-      setUnstructuredFiles([]);
-      setStructuredFiles([]);
-
-      addToast(
-        'success',
-        'Ingestion Complete',
-        `Successfully ingested ${totalCount} file(s) into Bronze & Silver Medallion layers.`
-      );
-    } catch {
-      addToast('error', 'Ingestion Error', 'Failed to complete pipeline ingestion. Check data validity.');
+    } catch (e) {
+      setIngestionError('Failed to complete pipeline ingestion. Check data validity.');
     } finally {
       setIsUploading(false);
       setUploadProgress(0);
@@ -488,6 +524,17 @@ export default function UploadDocuments() {
 
       </div>
 
+      {/* Ingestion Error Box */}
+      {ingestionError && (
+        <div className="bg-rose-50 border border-rose-200 rounded-xl p-4 mb-6 flex items-start gap-3">
+          <AlertCircle size={20} className="text-rose-600 shrink-0 mt-0.5" />
+          <div>
+            <h4 className="text-sm font-bold text-rose-900">Ingestion Error</h4>
+            <p className="text-xs text-rose-700 mt-1 whitespace-pre-wrap">{ingestionError}</p>
+          </div>
+        </div>
+      )}
+
       {/* Action Bar & Ingestion Progress */}
       <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs mb-6">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -569,17 +616,17 @@ export default function UploadDocuments() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
-              {recentIngestions.map((item) => (
-                <tr key={item.id} className="hover:bg-slate-50/50 transition-colors">
+              {recentIngestions.map((item, idx) => (
+                <tr key={idx} className="hover:bg-slate-50/50 transition-colors">
                   <td className="px-6 py-3.5 font-medium text-slate-900 flex items-center gap-2">
                     <FileCheck size={14} className="text-emerald-600" />
-                    {item.filename}
+                    {item.filename} {item.count > 1 && <span className="text-xs text-blue-600 ml-1">({item.count})</span>}
                   </td>
                   <td className="px-6 py-3.5 text-slate-600">{item.type}</td>
-                  <td className="px-6 py-3.5 text-slate-500">{item.size}</td>
+                  <td className="px-6 py-3.5 text-slate-500">{item.size_str}</td>
                   <td className="px-6 py-3.5">
                     <span className="font-semibold text-emerald-600">
-                      {(item.dqScore * 100).toFixed(0)}% (Valid)
+                      {(item.dq_score * 100).toFixed(0)}% (Valid)
                     </span>
                   </td>
                   <td className="px-6 py-3.5">
@@ -587,7 +634,7 @@ export default function UploadDocuments() {
                       {item.status}
                     </span>
                   </td>
-                  <td className="px-6 py-3.5 text-slate-400">{item.timestamp}</td>
+                  <td className="px-6 py-3.5 text-slate-400">{item.timestamp_str}</td>
                 </tr>
               ))}
             </tbody>

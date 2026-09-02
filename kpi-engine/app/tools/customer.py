@@ -12,6 +12,7 @@ def get_customer_segment_metrics(start: str, end: str, kpi_key: str = "monthly_r
         SELECT
             COALESCE(dimensions->>'customer_segment', 'unknown') AS customer_segment,
             COALESCE(dimensions->>'device_os', 'unknown') AS device_os,
+            DATE(observed_at) AS date,
             SUM(value) AS total_value
         FROM canonical_measurements
         WHERE observed_at >= :start
@@ -23,8 +24,8 @@ def get_customer_segment_metrics(start: str, end: str, kpi_key: str = "monthly_r
               )
               OR :kpi_key IS NULL
           )
-        GROUP BY dimensions->>'customer_segment', dimensions->>'device_os'
-        ORDER BY total_value DESC
+        GROUP BY dimensions->>'customer_segment', dimensions->>'device_os', DATE(observed_at)
+        ORDER BY date DESC, total_value DESC
     """)
 
     try:

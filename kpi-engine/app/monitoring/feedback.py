@@ -48,7 +48,7 @@ def submit_feedback(feedback: FeedbackRequest):
         
         # If there's a correction and it's a negative verdict, add it to our CI/CD dataset
         if feedback.correction and feedback.verdict < 1: # Assuming 1 is max score or 0 is bad
-            add_to_evaluation_dataset(feedback.trace_id, feedback.correction)
+            add_to_evaluation_dataset(feedback.trace_id, feedback.correction, comments=feedback.comments)
             
         return True
     except Exception as e:
@@ -58,9 +58,9 @@ def submit_feedback(feedback: FeedbackRequest):
             logger.error(f"Error submitting feedback to LangSmith: {e}")
         return False
 
-def add_to_evaluation_dataset(trace_id: str, correction: Dict[str, Any], dataset_name: str = "kpi-corrections-dataset"):
+def add_to_evaluation_dataset(trace_id: str, correction: Dict[str, Any], dataset_name: str = "kpi-corrections-dataset", comments: Optional[str] = None):
     """
-    Retrieves the run and adds it to an evaluation dataset along with the provided correction.
+    Retrieves the run and adds it to an evaluation dataset along with the provided correction and comments.
     """
     try:
         if not langsmith_client:
@@ -72,10 +72,15 @@ def add_to_evaluation_dataset(trace_id: str, correction: Dict[str, Any], dataset
         if not langsmith_client.has_dataset(dataset_name=dataset_name):
             langsmith_client.create_dataset(dataset_name=dataset_name, description="Human corrected traces")
             
-        # Add example to dataset
+        # Add example to dataset with comments in metadata
+        metadata = {}
+        if comments:
+            metadata["user_comment"] = comments
+
         langsmith_client.create_example(
             inputs=run.inputs,
             outputs=correction,
+            metadata=metadata,
             dataset_name=dataset_name
         )
         logger.info(f"Added trace {trace_id} to dataset {dataset_name} as an example.")

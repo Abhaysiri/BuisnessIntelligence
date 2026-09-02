@@ -12,3 +12,4 @@ class InvestigationState(TypedDict, total=False):
     analytical_results: list[dict]
     contradictions: list[dict]
     diagnostic_payload: DiagnosticPayload | None
+    dq_score: float

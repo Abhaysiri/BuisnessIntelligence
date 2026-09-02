@@ -83,7 +83,7 @@ def create_kpi_movement_event(
     )
 
     return KPIMovementEvent(
-        event_id=event_id or f"evt_{uuid4().hex[:12]}",
+        event_id=event_id or str(uuid4()),
         kpi_id=kpi_id,
         analysis_start=analysis_start,
         analysis_end=analysis_end,

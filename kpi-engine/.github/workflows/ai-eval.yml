@@ -1,0 +1,39 @@
+name: AI Evaluation Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'app/agents/**'
+      - 'app/prompts/**'
+      - 'app/evaluation/**'
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run LangSmith Offline Evaluation
+        env:
+          LANGSMITH_TRACING: "true"
+          LANGSMITH_ENDPOINT: "https://api.smith.langchain.com"
+          LANGSMITH_API_KEY: ${{ secrets.LANGSMITH_API_KEY }}
+          LANGSMITH_PROJECT: "pr-eval-${{ github.event.pull_request.number }}"
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          # The runner will exit with code 1 if the evaluation fails (e.g. score < 90%)
+          python -m app.evaluation.runner --dataset kpi-golden-dataset --experiment-prefix "PR-${{ github.event.pull_request.number }}"
