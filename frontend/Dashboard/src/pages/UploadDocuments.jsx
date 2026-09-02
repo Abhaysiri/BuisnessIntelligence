@@ -161,24 +161,35 @@ export default function UploadDocuments() {
       setUploadProgress(85);
       setCurrentStep('Stage 4/5: Running time-series gap regularization & Akima spline imputation...');
 
-      // Attempt actual API post, or gracefully handle simulation
-      try {
-        const formData = new FormData();
-        formData.append('tenant_id', tenantId);
-        formData.append('kpi_id', targetKpi);
-        [...unstructuredFiles, ...structuredFiles].forEach((f) => {
-          formData.append('files', f.file);
-        });
+        // Attempt actual API post – capture diagnostic payload ID
+        try {
+          const formData = new FormData();
+          formData.append('tenant_id', tenantId);
+          formData.append('kpi_id', targetKpi);
+          [...unstructuredFiles, ...structuredFiles].forEach((f) => {
+            formData.append('files', f.file);
+          });
 
-        await fetch('/api/v1/metrics/ingest', {
-          method: 'POST',
-          body: formData
-        }).catch(() => {
-          // Backend offline during preview is safely handled
-        });
-      } catch {
-        // Handled in simulation fallback
-      }
+          const resp = await fetch('http://localhost:8000/api/v1/metrics/ingest', {
+            method: 'POST',
+            body: formData,
+          });
+
+          if (!resp.ok) {
+            const err = await resp.text();
+            throw new Error(`Ingestion API error ${resp.status}: ${err}`);
+          }
+
+          const result = await resp.json(); // expect { diagnostic_payload_id: "..." }
+          const payloadId = result.diagnostic_payload_id;
+          if (payloadId) {
+            // Persist for the KPI analysis page
+            window.sessionStorage.setItem('diagnosticPayloadId', payloadId);
+          }
+        } catch (e) {
+          console.error('Ingestion request failed', e);
+          // Continue with simulation fallback
+        }
 
       await new Promise((r) => setTimeout(r, 500));
       setUploadProgress(100);

@@ -4,7 +4,8 @@ from uuid import uuid4
 from fastapi import APIRouter, HTTPException, Query, status
 from pydantic import BaseModel, Field
 
-from app.schemas.ingestion import RawPayload, CanonicalMeasurement, QuarantineRecord, DQScoreResult
+from app.schemas.diagnostic import DiagnosticPayload, Uncertainty
+from app.services.diagnostic import _DIAGNOSTIC_STORE
 from app.schemas.timeseries import STLDecompositionResult, STLParameters
 from app.timeseries.anomaly import run_stl_pipeline
 
@@ -24,8 +25,15 @@ class IngestBatchResponse(BaseModel):
     processed_count: int
     quarantined_count: int = 0
     dq_score: float = 1.0
-    trace_id: str = Field(default_factory=lambda: f"ingest_{uuid4().hex[:8]}")
-    message: str
+# duplicate trace_id removed to avoid Pydantic conflict
+
+    diagnostic_payload_id: Optional[str] = None
+
+    # end of model
+
+    # In ingest_metrics function, after computing processed and quarantined, generate payload_id
+    # and include in response
+    # (Will add later in separate edit)
 
 
 class QuarantineReplayRequest(BaseModel):
@@ -90,12 +98,29 @@ async def ingest_metrics(
 
     processed = len(records) - quarantined
 
+    # Generate a unique diagnostic payload ID
+    diagnostic_payload_id = str(uuid4())
+
+    # Generate a diagnostic payload using the investigation graph
+    from datetime import datetime
+    # Construct a minimal movement event for demonstration; in production, build appropriate event data
+    movement_event = {
+        "kpi_id": payload.kpi_id or "dummy_kpi",
+        "value": records[0].value if records else 0.0,
+        "timestamp": datetime.utcnow().isoformat(),
+    }
+    diagnostic_payload = run_investigation(movement_event)
+    diagnostic_payload_id = diagnostic_payload.incident_id
+
+
     return IngestBatchResponse(
         status="ACCEPTED",
         processed_count=processed,
         quarantined_count=quarantined,
         dq_score=1.0 if quarantined == 0 else 0.85,
+        trace_id=str(uuid4()),
         message=f"Successfully received {processed} metric measurements for Bronze/Silver processing.",
+        diagnostic_payload_id=diagnostic_payload_id,
     )
 
 

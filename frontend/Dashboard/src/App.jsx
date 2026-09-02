@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { 
   LayoutDashboard, 
@@ -213,44 +213,37 @@ function KpiAnalysis() {
     { label: 'Custom Reports', detail: 'Date Range & Metrics' }
   ];
 
-    const [messages, setMessages] = useState([
-    {
-      role: 'ai',
-      text: 'Hello John! I am tuned to your persona. What KPI story would you like to investigate today? You can ask about recent variance anomalies, dimensional breakdowns, or conversion drivers.'
-    }
-  ]);
+  const [payloadId, setPayloadId] = useState(null);
+  useEffect(() => {
+    const stored = window.sessionStorage.getItem('diagnosticPayloadId');
+    if (stored) setPayloadId(stored);
+  }, []);
 
+  // Updated handleSendMessage to use stored payloadId
   const handleSendMessage = async (e) => {
     e.preventDefault();
     if (!inputText.trim()) return;
-
+    if (!payloadId) {
+      console.error('No payload ID – upload documents first.');
+      alert('Please upload documents first so a diagnostic payload is created.');
+      return;
+    }
     const userMessage = { role: 'user', text: inputText };
     setMessages((prev) => [...prev, userMessage]);
     setInputText('');
-
-    // Add a loading message
     const loadingId = Date.now();
     setMessages((prev) => [...prev, { id: loadingId, role: 'ai', text: 'Analyzing KPI data and generating narrative...' }]);
-
     try {
-      // NOTE: Update this URL to match your exact backend orchestration endpoint.
-      // Currently, it hits the persona story endpoint, assuming you have a diagnostic payload ready.
-      const response = await fetch('http://localhost:8000/persona/story?diagnostic_payload_id=latest', {
+      const response = await fetch(`http://localhost:8000/persona/story?diagnostic_payload_id=${payloadId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          role: 'engineering', // Changed from 'Technical' to a valid PersonaRole enum
-          prompt: userMessage.text 
-        })
+        body: JSON.stringify({ role: 'engineering', prompt: userMessage.text })
       });
-
       if (!response.ok) {
         const errText = await response.text();
         throw new Error(`API request failed: ${response.status} - ${errText}`);
       }
       const data = await response.json();
-      
-      // Replace loading message with actual response
       setMessages((prev) => prev.map(msg => {
         if (msg.id === loadingId) {
           const content = data.narrative ? `**${data.headline}**\n\n${data.narrative}` : JSON.stringify(data);
@@ -258,12 +251,9 @@ function KpiAnalysis() {
         }
         return msg;
       }));
-
     } catch (error) {
       console.error(error);
-      setMessages((prev) => prev.map(msg => 
-        msg.id === loadingId ? { role: 'ai', text: 'Error: Could not connect to the KPI engine backend. Please ensure the API is running on port 8000.' } : msg
-      ));
+      setMessages((prev) => prev.map(msg => msg.id === loadingId ? { role: 'ai', text: 'Error: Could not connect to the KPI engine backend. Please ensure the API is running on port 8000.' } : msg));
     }
   };
 
