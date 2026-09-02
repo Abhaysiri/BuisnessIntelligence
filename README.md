@@ -1,173 +1,169 @@
 # Business Intelligence Engine
 
-An enterprise-oriented KPI diagnostics platform that ingests business data, validates its quality, detects material time-series movement, identifies contributing drivers, and generates role-aware KPI narratives.
+An enterprise-oriented Business Intelligence (BI) platform for turning KPI movements into governed, explainable actions. The repository combines a medallion-style data pipeline, data-quality controls, time-series anomaly detection, diagnostic agents, role-aware governance, observability, and a React upload experience.
 
-The project combines a Python/FastAPI backend with React dashboards for document ingestion, KPI storytelling, and visualizations.
+> **Prototype status.** The repository contains working implementation and test assets, but several operating paths deliberately use synthetic data or local/in-memory fallbacks. Runtime output labels simulated data with `[MOCK DATA]`. Treat the solution as a validated prototype baseline, not a production deployment.
 
-## Highlights
+## Why it exists
 
-- **Medallion ingestion**: immutable Bronze capture, Silver normalization, timestamp regularization, dimension hashing, and gap imputation.
-- **Data-quality controls**: schema, dataframe, boundary/outlier, and distribution-drift validation; failed records can be quarantined and replayed.
-- **KPI intelligence**: robust STL decomposition, dynamic baselines, confidence bands, anomaly scoring, and movement events.
-- **Governed analysis**: confidence gating, sparse-history handling, multi-factor attribution, tenant isolation, and PII-aware role controls.
-- **Persona storytelling**: LangGraph-driven, role-specific KPI narratives with traceable feedback.
-- **Observability**: request traces, latency and cost telemetry, golden datasets, and regression benchmarks.
+Teams often discover a KPI change late, cannot confidently identify its drivers, and may expose sensitive data or make ungoverned recommendations while investigating. This project provides one controlled flow:
 
-## Repository layout
+`Raw measurements → trusted canonical data → detected KPI movement → evidence-backed diagnosis → policy-governed action`
 
-```text
-.
-|-- data-ingest/                 # Bronze/Silver ingestion and imputation
-|-- data-validity/               # Validation, scoring, quarantine, telemetry, benchmarks
-|-- edge_cases/                  # Multi-factor, low-confidence, sparse-history, and security scenarios
-|-- kpi-engine/                  # FastAPI service, orchestration, analytics, and time-series engine
-|-- frontend/
-|   |-- Dashboard/               # React dashboard and document upload experience
-|   `-- Visualizers/             # Vega-Lite visualization service and React UI
-|-- tests/                       # Unified end-to-end tests
-|-- PROJECT.md                   # Feature inventory and implementation notes
-`-- TEST_READY.md                # Detailed verification report
-```
+## What the platform does
 
-## Core workflow
+| Capability | Implementation in this repository |
+|---|---|
+| Ingest and standardize data | Bronze/Silver/Gold-style pipeline, timestamp normalization, dimension hashing, and time-series imputation. |
+| Protect data quality | Six validation tiers: structure, schema/taxonomy, temporal integrity, domain/outlier checks, reconciliation, and distributional drift. |
+| Isolate bad records | Dead-letter quarantine plus an administrative replay API. |
+| Detect changes early | STL decomposition, cadence-aware parameters, dynamic baseline/confidence bounds, and Z-score anomaly events. |
+| Explain a KPI movement | Product, customer, geography, and channel investigation agents; contribution, dependency, temporal, evidence, and contradiction checks. |
+| Handle uncertainty responsibly | Confidence-based decision gates, clarification requests, abstention, and sparse-history Bayesian prior borrowing. |
+| Enforce secure action | Tenant/region-scoped query rewriting, PII and margin masking, and role-based approval controls. |
+| Measure reliability | Golden benchmark catalog, telemetry/cost collection, trace/latency/cost response headers, and automated test suites. |
+| Make data entry approachable | React/Vite upload page for structured and unstructured data, with validation feedback and progress display. |
 
-1. A user selects a business domain and role in the dashboard.
-2. The user selects a tenant and KPI, then stages structured or unstructured files.
-3. Data progresses through Bronze storage, Silver cleansing, imputation, and data-quality validation.
-4. Invalid records are quarantined for remediation and optional replay; accepted data creates a diagnostic payload.
-5. The KPI engine decomposes time-series data, evaluates anomalies and drivers, and applies governance checks.
-6. A persona-aware service produces a KPI story; users can submit feedback tied to the diagnostic trace.
-
-## Architecture
-
-### Ingestion and data quality
-
-`data-ingest/` implements the Medallion pipeline:
-
-- **Bronze**: immutable raw-payload capture, partitioned by tenant, KPI, and date.
-- **Silver**: Polars-based normalization, ISO-8601 UTC regularization, and deterministic dimension hashes.
-- **Imputation**: Akima interpolation for short gaps, seasonal persistence for medium gaps, and cold-start routing for insufficient history.
-
-`data-validity/` supplies the validation gate:
-
-- Tier 1 — structural and type checks.
-- Tier 2 — dataframe schema and categorical checks.
-- Tier 4 — physical bounds and outlier checks.
-- Tier 6 — KS-test and PSI drift detection.
-- Composite DQ status: `VALID`, `DEGRADED`, or `INVALID`.
-- Dead-letter quarantine records and administrative replay.
-
-### KPI diagnostics
-
-The time-series engine in `kpi-engine/app/timeseries/` uses robust STL decomposition to calculate trend, seasonality, residuals, dynamic expected values, confidence bounds, and anomaly scores. The analytics and orchestration layers add evidence, contribution analysis, contradiction handling, and persona-specific explanations.
-
-### Frontend applications
-
-| Application | Location | Purpose |
-|---|---|---|
-| Dashboard | `frontend/Dashboard` | Persona onboarding, document/data upload, ingestion status, and KPI narrative requests. |
-| Visualizers | `frontend/Visualizers/web` | Renders Vega-Lite KPI visualizations returned by the visualization API. |
-
-## API
-
-Start the KPI service from `kpi-engine`:
-
-```powershell
-uvicorn app.main:api --reload --port 8000
-```
-
-Main endpoints:
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/health` | Service health check. |
-| `POST` | `/investigations` | Runs an investigation for a KPI movement event. |
-| `POST` | `/api/v1/metrics/ingest` | Accepts a batch of raw metric measurements for ingestion. |
-| `POST` | `/api/v1/quarantine/replay` | Replays a remediated quarantined record. |
-| `POST` | `/api/v1/timeseries/decompose` | Runs STL decomposition, baseline calculation, and anomaly detection. |
-| `POST` | `/persona/story` | Generates a persona-tailored narrative for a diagnostic payload. |
-| `POST` | `/persona/feedback` | Records feedback for a generated narrative. |
-
-The service returns observability headers including `X-Trace-ID`, `X-Latency-MS`, and `X-Total-Cost-USD`.
-
-## Getting started
-
-### Prerequisites
-
-- Python 3.11+ recommended
-- Node.js 20+ and npm
-
-### Backend
-
-```powershell
-cd kpi-engine
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-uvicorn app.main:api --reload --port 8000
-```
-
-The complete time-series and validation test suites additionally use scientific/data packages such as NumPy, Pandas, Polars, SciPy, Statsmodels, and Pandera. Install the project environment dependencies used by your workflow before running those suites.
-
-### Dashboard
-
-In a separate terminal:
-
-```powershell
-cd frontend\Dashboard
-npm install
-npm run dev
-```
-
-Vite serves the dashboard locally (normally at `http://localhost:5173`). The frontend expects the KPI API on port `8000`.
-
-### Visualizer UI
-
-```powershell
-cd frontend\Visualizers\web
-npm install
-npm run dev
-```
-
-The visualizer UI calls its visualization API at `http://localhost:8001/visualizations`.
-
-## Quality and verification
-
-Run the unified end-to-end suite from the repository root:
-
-```powershell
-pytest tests/test_e2e_unified.py -v
-```
-
-Additional focused checks:
-
-```powershell
-pytest edge_cases/test_edge_cases.py -v
-pytest kpi-engine/tests -v
-
-cd frontend\Dashboard
-npm run build
-npm run lint
-```
-
-The test coverage includes ingestion, validation, quarantine/replay, time-series decomposition, golden datasets, telemetry, confidence gating, sparse-history behavior, attribution, and role-based security. See `TEST_READY.md` for the recorded verification report.
-
-## Data transparency
-
-Several benchmarks and scenario simulators use synthetic data. Those execution paths emit the following notice:
+## Architecture at a glance
 
 ```text
-[MOCK DATA] This output uses synthetic/simulated data. Replace with real ingested data.
+Sources / uploads
+       │
+       ▼
+Bronze storage → Silver normalization & imputation → Six-tier validity gate
+       │                                               │
+       │                                               └── Quarantine & replay
+       ▼
+Gold / canonical measurements
+       │
+       ▼
+STL baseline + anomaly detection
+       │
+       ▼
+Specialist diagnostic agents → evidence/contradiction checks → governed recommendation
+       │                                                     │
+       └────────────────── telemetry, benchmark & audit ────┘
 ```
 
-Treat mock and benchmark outputs as demonstration data, not production business results.
+## Repository map
 
-## Documentation
+```text
+data-ingest/                 Medallion ingestion, Bronze/Silver processing, imputation
+data-validity/               Six-tier validation, quarantine, DQ scoring, telemetry, benchmarks
+kpi-engine/app/              FastAPI service, STL engine, orchestration, governance, schemas
+edge_cases/                  Attribution, low-confidence, sparse-history, and security scenarios
+frontend/Dashboard/          React + Vite upload interface
+tests/                       Unified end-to-end tests
+kpi-engine/tests/            Time-series and API integration tests
+public-architecture-dia/     Architecture and user-flow visuals
+PROJECT.md                   Detailed feature inventory and architecture notes
+TEST_READY.md                Repository-authored verification report
+```
 
-- `PROJECT.md` — capabilities, milestones, and component overview.
-- `TEST_READY.md` — test readiness and verification details.
-- `BI_ENGINE_IMPLEMENTATION_PLAN.md` — implementation plan and delivery notes.
+## Key API surface
 
-## License
+The FastAPI service exposes:
 
-No license file is currently included. Add an explicit license before distributing or reusing this project outside its intended environment.
+| Endpoint | Purpose |
+|---|---|
+| `GET /health` | Health check for the KPI service. |
+| `POST /investigations` | Runs a KPI-movement diagnostic. |
+| `POST /api/v1/metrics/ingest` | Receives one or more metric records for ingestion. |
+| `POST /api/v1/quarantine/replay` | Replays a remediated quarantined record. |
+| `POST /api/v1/timeseries/decompose` | Performs STL decomposition and anomaly analysis. |
+
+# Step 1: Launch Supporting Infrastructure
+
+### 1.1 Verify MinIO Object Store
+Ensure the MinIO Docker container is running on port 19000:
+```powershell
+docker ps --filter "name=minio"
+```
+*(If not running, start with:)*
+```powershell
+docker run -d -p 19000:9000 -p 19001:9001 --name minio -e MINIO_ROOT_USER=minioadmin -e MINIO_ROOT_PASSWORD=minioadmin minio/minio server /data --console-address ":9001"
+```
+
+---
+
+## Step 2: Start Backend Services
+
+### 2.1 Launch KPI Engine API
+In Terminal 1:
+```powershell
+cd C:\Users\Abhay\Desktop\CODING\BuisnessIntelligence.ai\kpi-engine
+python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+### 2.2 Launch Visualizers Microservice
+In Terminal 2:
+```powershell
+cd C:\Users\Abhay\Desktop\CODING\BuisnessIntelligence.ai\frontend\Visualizers\api
+python -m uvicorn main:app --host 0.0.0.0 --port 8001 --reload
+```
+## Step 3: Launch Enterprise Frontend Dashboard
+
+In Terminal 3:
+```powershell
+cd C:\Users\Abhay\Desktop\CODING\BuisnessIntelligence.ai\frontend\Dashboard
+npm run dev
+```
+Open **`http://localhost:5173`** in your browser.
+
+---
+
+## Step 4: Direct Verification of Core Mathematical Engines
+
+To demonstrate the underlying analytical algorithms from the command line:
+
+### 1. STL Decomposition & 90-Day Synthetic Anomaly Detection
+```powershell
+cd C:\Users\Abhay\Desktop\CODING\BuisnessIntelligence.ai
+python -c "import pandas as pd, numpy as np; from kpi_engine.app.timeseries.stl import STLDecompositionEngine; t = pd.date_range('2026-01-01', periods=90, freq='D'); y = 1000 + 5*np.arange(90) + 200*np.sin(2*np.pi*np.arange(90)/7) + np.random.normal(0, 15, 90); y[60] -= 600; df = pd.DataFrame({'timestamp': t, 'value': y}); res = STLDecompositionEngine.decompose_series(df, cadence='daily'); print(f'Anomaly Detected: {res.anomaly_detected}, Z-Score: {res.latest_z_score:.2f}')"
+```
+
+### 2. Multi-Factor Shapley Value Attribution Simulator
+```powershell
+python edge_cases/multifactor.py
+```
+
+### 3. Low-Confidence & Contradiction Resolution Engine
+```powershell
+python edge_cases/low_confidence.py
+```
+
+### 4. Sparse-History Cold Start Bayesian Prior Borrowing
+```powershell
+python edge_cases/sparse_history.py
+```
+
+### 5. Role-Based Security & Dynamic PII Redaction
+```powershell
+python edge_cases/role_security.py
+```
+
+
+The development server is expected at `http://localhost:5173` and is already permitted by the backend CORS configuration.
+
+
+`TEST_READY.md` records a prior project run reporting 22/22 unified tests, 11/11 edge-case tests, 11/11 ingestion tests, a successful frontend build, and zero lint errors. Re-run these commands in your own environment before making release or production claims.
+
+## Design principles
+
+- **Data before conclusions:** diagnose only from validated data and retain quality status.
+- **Explainability before action:** preserve evidence, contribution, dependency, and uncertainty signals.
+- **Abstention is a feature:** low-confidence or contradictory evidence triggers clarification or human review.
+- **Security by context:** tenant, region, persona, and field entitlements restrict both access and actions.
+- **Transparent demonstrations:** synthetic and fallback data must remain explicitly labeled.
+
+## Current limitations and next steps
+
+1. Replace simulated/local fallback storage and synthetic benchmarks with managed production data services.
+2. Wire the API ingestion route to the full medallion pipeline for every production request.
+3. Configure secrets, identity, tenant isolation, observability backends, and CI/CD outside source code.
+4. Add load, security, integration, and user-acceptance testing with real governed datasets.
+5. Establish operational ownership, alert thresholds, incident response, and model/rule-change controls.
+
+## Technology stack
+
+Python, FastAPI, Pydantic, Polars, Pandera, pandas, SciPy, statsmodels, LangChain/LangGraph, Zen Engine, LangSmith, React, Vite, Tailwind CSS, and Oxlint.
