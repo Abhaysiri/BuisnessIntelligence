@@ -131,7 +131,7 @@ class Tier1BatchValidator:
 
 REGISTERED_TAXONOMIES = {
     "channel": ["Enterprise", "Self-Serve", "Partner", "Direct", "Organic", "Paid", "All", "Inbound", "Outbound"],
-    "region": ["US", "EMEA", "APAC", "LATAM", "Global", "NA", "EU"],
+    "region": ["US", "EMEA", "APAC", "LATAM", "Global", "NA", "EU", "US-East", "US-West", "EU-Central"],
     "tier": ["Free", "Starter", "Professional", "Enterprise", "Custom"],
 }
 

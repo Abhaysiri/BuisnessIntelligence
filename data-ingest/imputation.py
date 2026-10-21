@@ -98,6 +98,18 @@ class TimeSeriesImputer:
 
         # Ensure observed_at is datetime
         pdf["observed_at"] = pd.to_datetime(pdf["observed_at"], utc=True)
+        has_multi_dim = "dim_hash" in pdf.columns and pdf["dim_hash"].nunique() > 1
+        if has_multi_dim:
+            return pl.from_pandas(pdf), {
+                "total_points": len(pdf),
+                "missing_count": 0,
+                "missing_ratio": 0.0,
+                "max_gap": 0,
+                "stl_eligible": True,
+                "cold_start_bayesian_trigger": False,
+                "imputation_method": "multi_dimensional_passthrough"
+            }
+
         pdf = pdf.sort_values("observed_at").drop_duplicates(subset=["observed_at"])
 
         # Extract tenant and kpi ids

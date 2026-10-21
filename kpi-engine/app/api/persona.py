@@ -57,15 +57,14 @@ def submit_persona_feedback(feedback: FeedbackRequest):
         with engine.begin() as connection:
             connection.execute(
                 text("""
-                    INSERT INTO public.feedback (diagnostic_payload_id, role, is_helpful, comments)
-                    VALUES (:pid, :role, :is_helpful, :comments)
+                    INSERT INTO public.feedback (trace_id, reviewer_role, verdict, comment)
+                    VALUES (:trace_id, :reviewer_role, :verdict, :comment)
                 """),
                 {
-                    # Use trace_id or fallback to generic uuid if it's not a valid uuid
-                    "pid": feedback.trace_id, 
-                    "role": feedback.reviewer_role,
-                    "is_helpful": bool(feedback.verdict),
-                    "comments": feedback.comments or ""
+                    "trace_id": feedback.trace_id, 
+                    "reviewer_role": feedback.reviewer_role,
+                    "verdict": str(feedback.verdict),
+                    "comment": feedback.comments or ""
                 }
             )
     except Exception as e:

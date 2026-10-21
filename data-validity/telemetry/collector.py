@@ -35,6 +35,9 @@ class ModelCallsBreakdown(BaseModel):
     total_calls: int = 0
     counts: Dict[str, int] = Field(default_factory=dict)
 
+    def __getitem__(self, item: str):
+        return getattr(self, item, self.counts.get(item, 0))
+
 
 class TelemetryPayload(BaseModel):
     trace_id: str

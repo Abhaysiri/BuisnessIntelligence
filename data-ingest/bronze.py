@@ -79,6 +79,10 @@ class BronzeStore:
 
     def _init_minio_client(self) -> None:
         """Attempt to connect to MinIO and ensure target bucket exists."""
+        if os.getenv("USE_MINIO", "false").lower() != "true":
+            self._is_live = False
+            return
+
         if not HAS_MINIO:
             self._is_live = False
             return

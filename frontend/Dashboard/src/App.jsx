@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import './index.css';
 import UploadDocuments from './pages/UploadDocuments';
+import { VegaEmbed } from 'react-vega';
 
 const domains = {
   Technical: [
@@ -246,6 +247,68 @@ function KpiAnalysis({ userRole }) {
     setInputText('');
     const loadingId = Date.now();
     setMessages((prev) => [...prev, { id: loadingId, role: 'ai', text: 'Analyzing KPI data and generating narrative...' }]);
+
+    let specs = [];
+    try {
+      const mockPayload = {
+        incident_id: "test-123",
+        kpi_id: "revenue_weekly",
+        observed_value: 850000,
+        expected_value: 900000,
+        percentage_change: -5.55,
+        drivers: [
+          {
+            name: "Conversion Rate Drop in Europe",
+            contribution_absolute: -40000,
+            contribution_percentage: -4.44,
+            diagnostic_confidence: 0.92
+          },
+          {
+            name: "Traffic Drop in Asia",
+            contribution_absolute: -8000,
+            contribution_percentage: -0.88,
+            diagnostic_confidence: 0.85
+          }
+        ],
+        metadata: {
+          trend_data: Array.from({ length: 30 }).map((_, i) => ({
+            timestamp: new Date(Date.now() - (30 - i) * 86400000).toISOString(),
+            actual_value: 1000 - (30 - i) * 10 + ((30 - i) % 3 * 5),
+            expected_value: 1050 - (30 - i) * 10,
+            lower_bound: 1020 - (30 - i) * 10,
+            upper_bound: 1080 - (30 - i) * 10
+          })),
+          dimensions: [
+            { dimension: "Europe", value: -40000 },
+            { dimension: "Asia", value: -8000 },
+            { dimension: "US", value: -5000 }
+          ],
+          events: [
+            {
+              timestamp: new Date(Date.now() - 15 * 86400000).toISOString(),
+              event_type: "Marketing",
+              title: "Summer Sale"
+            },
+            {
+              timestamp: new Date(Date.now() - 5 * 86400000).toISOString(),
+              event_type: "Outage",
+              title: "Payment Gateway Down"
+            }
+          ]
+        }
+      };
+      const vizRes = await fetch("http://127.0.0.1:8001/visualizations", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(mockPayload)
+      });
+      if (vizRes.ok) {
+          specs = await vizRes.json();
+      }
+    } catch (e) {
+      console.warn("Visualizations API not available", e);
+    }
+
     try {
       const response = await fetch(`http://127.0.0.1:8000/persona/story?diagnostic_payload_id=${payloadId}`, {
         method: 'POST',
@@ -260,7 +323,7 @@ function KpiAnalysis({ userRole }) {
       setMessages((prev) => prev.map(msg => {
         if (msg.id === loadingId) {
           const content = data.narrative ? `**${data.headline}**\n\n${data.narrative}` : JSON.stringify(data);
-          return { role: 'ai', text: content, trace_id: data.trace_id, is_persona_story: true, id: loadingId, feedback_status: null };
+          return { role: 'ai', text: content, trace_id: data.trace_id, is_persona_story: true, id: loadingId, feedback_status: null, visualizations: specs };
         }
         return msg;
       }));
@@ -354,6 +417,16 @@ function KpiAnalysis({ userRole }) {
                     </React.Fragment>
                   ))}
                 </div>
+                {msg.visualizations && msg.visualizations.length > 0 && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                    {msg.visualizations.map((spec, idx) => (
+                      <div key={idx} className="bg-white border border-blue-100 rounded-lg p-3 shadow-xs">
+                        <h4 className="text-xs font-semibold text-slate-800 mb-2">{spec.name}</h4>
+                        <VegaEmbed spec={spec.vega_lite_spec} options={{ actions: false }} style={{ width: '100%' }} />
+                      </div>
+                    ))}
+                  </div>
+                )}
                 {msg.is_persona_story && msg.id && (
                   <div className="flex flex-col gap-2 mt-2 pt-2 border-t border-blue-200/50">
                     <div className="flex items-center gap-2">

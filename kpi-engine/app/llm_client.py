@@ -3,7 +3,6 @@ from langchain_openai import ChatOpenAI
 from langchain_core.runnables import RunnableLambda
 from app.config import settings
 
-
 def make_strict_schema(model_cls):
     schema = model_cls.model_json_schema()
 
@@ -20,11 +19,15 @@ def make_strict_schema(model_cls):
     _enforce_additional_properties(schema)
     return schema
 
-
 def get_chat_llm(temperature: float = 0.0):
-    api_key = settings.openai_api_key or os.getenv('OPENAI_API_KEY', 'sk-mock-key')
+    api_key = (
+        settings.groq_api_key
+        or settings.openai_api_key
+        or os.getenv('GROQ_API_KEY')
+        or os.getenv('OPENAI_API_KEY')
+    )
     base_url = settings.openai_api_base or os.getenv('OPENAI_API_BASE', 'https://api.groq.com/openai/v1')
-    model = settings.openai_model or os.getenv('OPENAI_MODEL', 'openai/gpt-oss-120b')
+    model = settings.openai_model or os.getenv('OPENAI_MODEL', 'openai/gpt-oss-20b')
 
     return ChatOpenAI(
         model=model,
@@ -32,7 +35,6 @@ def get_chat_llm(temperature: float = 0.0):
         temperature=temperature,
         api_key=api_key
     )
-
 
 def get_structured_llm(model_cls, temperature: float = 0.0):
     llm = get_chat_llm(temperature=temperature)
@@ -44,17 +46,7 @@ def get_structured_llm(model_cls, temperature: float = 0.0):
     )
 
 def get_gemini_chat_llm(temperature: float = 0.0):
-    from langchain_google_genai import ChatGoogleGenerativeAI
-    api_key = os.getenv('GEMINI_API_KEY')
-    return ChatGoogleGenerativeAI(
-        model='gemini-2.5-flash',
-        temperature=temperature,
-        google_api_key=api_key
-    )
+    return get_chat_llm(temperature=temperature)
 
 def get_gemini_structured_llm(model_cls, temperature: float = 0.0):
-    llm = get_gemini_chat_llm(temperature=temperature)
-    return (
-        llm.with_structured_output(model_cls)
-    )
-
+    return get_structured_llm(model_cls, temperature=temperature)

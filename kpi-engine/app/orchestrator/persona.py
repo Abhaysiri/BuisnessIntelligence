@@ -64,7 +64,10 @@ Generate the persona-specific story using ONLY the information in the Diagnostic
             if cb.traced_runs:
                 result.trace_id = str(cb.traced_runs[0].id)
         return result
-    except Exception:
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        print('ACTUAL LLM ERROR:', e)
         # Structured deterministic fallback formatted for role
         drivers = diagnostic_payload.get("drivers", [])
         primary_name = drivers[0].get("name", "Identified anomaly") if drivers else "Unknown driver"

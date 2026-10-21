@@ -20,7 +20,7 @@ def get_customer_segment_metrics(start: str, end: str, kpi_key: str = "monthly_r
           AND (
               kpi_id IN (
                   SELECT id FROM kpi_definitions 
-                  WHERE kpi_key = :kpi_key OR kpi_key = 'revenue'
+                  WHERE kpi_key = :kpi_key OR kpi_key LIKE '%' || :kpi_key || '%'
               )
               OR :kpi_key IS NULL
           )

@@ -149,15 +149,11 @@ class MedallionIngestionPipeline:
         )
 
         # Skip 1D imputation for dimensional data to avoid destroying dimensional breakdowns
-        imputed_df = silver_df
-        imputation_summary = {
-            "total_points": len(silver_df),
-            "missing_count": 0,
-            "missing_ratio": 0.0,
-            "max_gap": 0,
-            "stl_eligible": True,
-            "cold_start_bayesian_trigger": False,
-        }
+        imputed_df, imputation_summary = self.imputer.regularize_and_impute(
+            df_or_records=silver_df,
+            tenant_id=tenant_id,
+            kpi_id=kpi_id,
+        )
 
         # Convert to list of dict records for validation gates
         records_to_validate = imputed_df.to_dicts()

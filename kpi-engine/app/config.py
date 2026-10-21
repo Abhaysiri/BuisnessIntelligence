@@ -12,6 +12,9 @@ class Settings(BaseSettings):
     langsmith_endpoint: str = "https://api.smith.langchain.com"
     langsmith_api_key: str | None = None
     langsmith_project: str = "default"
+    
+    groq_api_key: str | None = None
+    gemini_api_key: str | None = None
 
     class Config:
         env_file = ".env"

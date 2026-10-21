@@ -142,7 +142,7 @@ async def ingest_metrics(
                             text("""
                                 INSERT INTO canonical_measurements 
                                 (organization_id, kpi_id, kpi_version_id, observed_at, value, unit, dimensions)
-                                VALUES ((SELECT organization_id FROM kpi_definitions LIMIT 1), (SELECT id FROM kpi_definitions LIMIT 1), :ver, :obs, :val, :unit, :dims)
+                                VALUES ((SELECT organization_id FROM kpi_definitions LIMIT 1), (SELECT id FROM kpi_definitions LIMIT 1), :ver, :obs, :val, :unit, cast(:dims as jsonb))
                             """),
                             {
                                 "ver": kpi_version_id,
